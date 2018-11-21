@@ -74,9 +74,6 @@ function showData()
      }
 }
 
-
-
-
    var updateModal = document.querySelector(".update-modal");
    var updateTrigger = document.querySelector(".update-trigger");
    var updateCloseButton = document.querySelector(".update-close-button"); 
@@ -87,13 +84,35 @@ function showData()
 
 function updateData()
 {
+
+   var updateModal = document.querySelector(".update-modal");
+   var updateTrigger = document.querySelector(".update-trigger");
+   var updateCloseButton = document.querySelector(".update-close-button"); 
+   updateTrigger.addEventListener("click", updateToggleModal);
+   updateCloseButton.addEventListener("click", updateToggleModal);
+   window.addEventListener("click", updateWindowOnClick);
+
    var contactId=event.srcElement.id;
    var contact=JSON.parse(localStorage.getItem("allContactLS"));
    contact=contact[contactId];
    console.log(contact);
+   document.getElementById("update-firstName").value=contact.firstName;
+   document.getElementById("update-lastName").value=contact.lastName;
+   document.getElementById("update-phoneNumber").value=contact.phoneNumber;
+   document.getElementById("update-indexNumber").value=contactId;
+}
 
-   
-
+function saveUpdateData()
+{
+	console.log("kkkk");
+	var contactId=document.getElementById("update-indexNumber").value;
+	var contacts=JSON.parse(localStorage.getItem("allContactLS"));
+    contacts[contactId].firstName=document.getElementById("update-firstName").value;
+    contacts[contactId].lastName=document.getElementById("update-lastName").value;
+    contacts[contactId].phoneNumber=document.getElementById("update-phoneNumber").value;
+    localStorage.setItem("allContactLS",JSON.stringify(contacts));
+    updateToggleModal();
+    showData();
 }
 
 function updateToggleModal() {

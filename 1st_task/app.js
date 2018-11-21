@@ -1,6 +1,12 @@
 var modal = document.querySelector(".modal");
 var trigger = document.querySelector(".trigger");
 var closeButton = document.querySelector(".close-button");
+
+trigger.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
+
+
 showData();
 
 function toggleModal() {
@@ -42,6 +48,10 @@ function submitData()
 function showData()
 {
      var contacts=JSON.parse(localStorage.getItem("allContactLS"));
+
+     if(contacts!=null)
+     {
+       
      var mainContent=document.getElementById("main-content");
      mainContent.innerHTML="";
      
@@ -56,18 +66,42 @@ function showData()
       var coloumn4=row.insertCell(3);
       coloumn1.innerHTML=contacts[i].firstName+" "+contacts[i].lastName;
       coloumn2.innerHTML=contacts[i].phoneNumber;
-      coloumn3.innerHTML="<button class='btn' onClick='updateData()' id="+i+">Update</button>";
+      coloumn3.innerHTML="<button class='update-trigger' onClick='updateData()' id="+i+">Update</button>";
       coloumn4.innerHTML="<button>Delete</button>";
      }
      mainContent.insertAdjacentHTML('beforeend', '</table>');
 
+     }
 }
+
+
+
+
+   var updateModal = document.querySelector(".update-modal");
+   var updateTrigger = document.querySelector(".update-trigger");
+   var updateCloseButton = document.querySelector(".update-close-button"); 
+
+   updateTrigger.addEventListener("click", updateToggleModal);
+   updateCloseButton.addEventListener("click", updateToggleModal);
+   window.addEventListener("click", updateWindowOnClick);
 
 function updateData()
 {
-   console.log(event.srcElement.parentNode);
+   var contactId=event.srcElement.id;
+   var contact=JSON.parse(localStorage.getItem("allContactLS"));
+   contact=contact[contactId];
+   console.log(contact);
+
+   
+
 }
 
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
+function updateToggleModal() {
+    updateModal.classList.toggle("update-show-modal");
+}
+ 
+function updateWindowOnClick(event) {
+    if (event.target === updateModal) {
+        updateToggleModal();
+    }
+}

@@ -6,6 +6,7 @@ trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
+var deleteContactId;
 
 showData();
 
@@ -67,7 +68,9 @@ function showData()
       coloumn1.innerHTML=contacts[i].firstName+" "+contacts[i].lastName;
       coloumn2.innerHTML=contacts[i].phoneNumber;
       coloumn3.innerHTML="<button class='update-trigger' onClick='updateData()' id="+i+">Update</button>";
-      coloumn4.innerHTML="<button>Delete</button>";
+      coloumn3.addEventListener("click",updateToggleModal);
+      coloumn4.innerHTML="<button class='delete-trigger' onClick='FindDeleteContactId()' id='delete"+i+"'>Delete</button>";
+      coloumn4.addEventListener("click",deleteToggleModal);
      }
      mainContent.insertAdjacentHTML('beforeend', '</table>');
 
@@ -75,30 +78,19 @@ function showData()
 }
 
    var updateModal = document.querySelector(".update-modal");
-   var updateTrigger = document.querySelector(".update-trigger");
    var updateCloseButton = document.querySelector(".update-close-button"); 
-
-   updateTrigger.addEventListener("click", updateToggleModal);
    updateCloseButton.addEventListener("click", updateToggleModal);
    window.addEventListener("click", updateWindowOnClick);
+
 
 function updateData()
 {
-   
-   console.log(this);
-   /*
-   var updateModal = document.querySelector(".update-modal");
-   var updateTrigger = document.querySelector(".update-trigger");
-   var updateCloseButton = document.querySelector(".update-close-button"); 
-   updateTrigger.addEventListener("click", updateToggleModal);
-   updateCloseButton.addEventListener("click", updateToggleModal);
-   window.addEventListener("click", updateWindowOnClick);
-   */
-
    var contactId=event.srcElement.id;
    var contact=JSON.parse(localStorage.getItem("allContactLS"));
    contact=contact[contactId];
    console.log(contact);
+   
+
    document.getElementById("update-firstName").value=contact.firstName;
    document.getElementById("update-lastName").value=contact.lastName;
    document.getElementById("update-phoneNumber").value=contact.phoneNumber;
@@ -125,5 +117,37 @@ function updateToggleModal() {
 function updateWindowOnClick(event) {
     if (event.target === updateModal) {
         updateToggleModal();
+    }
+}
+
+   var deleteModal = document.querySelector(".delete-modal");
+   var deleteCloseButton = document.querySelector(".delete-no"); 
+   deleteCloseButton.addEventListener("click", deleteToggleModal);
+   window.addEventListener("click", deleteWindowOnClick);
+
+function FindDeleteContactId()
+{
+	deleteContactId=event.srcElement.id;
+	deleteContactId=deleteContactId.replace("delete","");
+	deleteContactId=parseInt(deleteContactId);
+	console.log(deleteContactId);
+}
+
+function deleteData()
+{
+	var contacts=JSON.parse(localStorage.getItem("allContactLS"));
+    contacts.splice(deleteContactId,1);
+    localStorage.setItem("allContactLS",JSON.stringify(contacts));
+    deleteToggleModal();
+    showData();        
+}
+
+function deleteToggleModal() {
+    deleteModal.classList.toggle("delete-show-modal");
+}
+ 
+function deleteWindowOnClick(event) {
+    if (event.target === deleteModal) {
+        deleteToggleModal();
     }
 }

@@ -84,13 +84,16 @@ function showData()
 
 function updateData()
 {
-
+   
+   console.log(this);
+   /*
    var updateModal = document.querySelector(".update-modal");
    var updateTrigger = document.querySelector(".update-trigger");
    var updateCloseButton = document.querySelector(".update-close-button"); 
    updateTrigger.addEventListener("click", updateToggleModal);
    updateCloseButton.addEventListener("click", updateToggleModal);
    window.addEventListener("click", updateWindowOnClick);
+   */
 
    var contactId=event.srcElement.id;
    var contact=JSON.parse(localStorage.getItem("allContactLS"));

@@ -51,12 +51,13 @@ nav {
 	float: left;
 	width: 95%;
 	background-color: #EBEFF2;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
-#sidebar-left,
-#main
+#sidebar-left
 {
-	min-height: 600px;
+	/*min-height: 600px;*/
+	height: 100%;
 }
 #welcome_message
 {
@@ -120,6 +121,7 @@ button
     display: inline-block;
     padding-left: 40%;
     padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .pagination a {
@@ -150,14 +152,14 @@ button
 .grid-container {
   display: grid;
   grid-gap: 10px;
-  background-color: #2196F3;
+  /*background-color: #2196F3;*/
   padding: 10px;
 }
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
+  /*background-color: rgba(255, 255, 255, 0.8);*/
+  background-color: white;
   text-align: center;
   padding: 20px;
-  font-size: 20px;
 }
 
 
@@ -193,6 +195,12 @@ button
 }
 
 
+#send-message
+{
+	width: 100%;
+	height: 150px;
+	margin-bottom: 10px;
+}
 .fa-camera
 {
 	float: left;
@@ -203,6 +211,64 @@ button
 	float: right;
 }
 
+
+.client-item-title
+{
+	float: left;
+}
+.client-item-name
+{
+	float: right;
+}
+.traffic-source
+{
+	float: left;
+}
+.traffic-source-value
+{
+	float: right;
+}
+.money
+{
+	color:  #00CCCB;
+	font-size: 20px;
+	padding-bottom: 5px;
+}
+
+.fa-users
+{
+	color:  #00CCCB;
+}
+
+.fa-level-up
+{
+	color: red;
+}
+.extra-visitor-number
+{
+	color: red;
+}
+.fa-square
+{
+	color:  #00CCCB;
+}
+.fa-facebook-f
+{
+	color: blue;
+}
+.fa-camera
+{
+	color:  #00CCCB;
+}
+#upload
+{
+	float: left;
+	padding-left: 2px;
+}
+.fa-times
+{
+	color: red;
+}
 /*
 .item1
 {

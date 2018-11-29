@@ -1,157 +1,184 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
-     <header>
-     	<span class="leftPartHeader">
-        <i class="fa fa-navicon"></i>
-     	<input type="text" name="search" placeholder="search...." aria-label="Search">
-     	<a href="#">Authors</a>
-     	<a href="#">My Files</a>
-     	<a href="#">Trending</a>
-     	</span>
-
-     	<span class="rightPartHeader">
-     		<i class="fa fa-bell"></i>
-     		<i class="fa fa-arrows-alt"></i>
-     		<i class="fa fa-user-circle-o"></i>
-     	</span>
-
-     </header>
-
-     <nav id="sidebar-left">
-     	<ul>
-     		<li><i class="fa fa-home"></i></li>
-     	    <li><i class="fa fa-envelope"></i></li>
-     	    <li><i class="fa fa-eye"></i></li>
-     	    <li><i class="fa fa-circle-o"></i></li>
-     	    <li><i class="fa fa-map-marker"></i></li>
-     	    <li><i class="fa fa-bolt"></i></li>
-     	    <li><i class="fa fa-cog"></i></li>
-     	    <li><i class=""></i></li>
-     	</ul>
-     </nav>
-
-     <div id="main">
-
-     	<div id="welcome_message">
-     	<h3>Dashboard</h3>
-     	<h4>Welcome to freebrander admin panel !</h4>
-     	</div>
-
-        <table>
+   <head>
+      <title>Dashboard</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body>
+      <header>
+         <span class="leftPartHeader">
+         <i class="fa fa-navicon"></i>
+         <input type="text" name="search" placeholder="search...." aria-label="Search">
+         <a href="#">Authors</a>
+         <a href="#">My Files</a>
+         <a href="#">Trending</a>
+         </span>
+         <span class="rightPartHeader">
+         <i class="fa fa-bell"></i>
+         <i class="fa fa-arrows-alt"></i>
+         <i class="fa fa-user-circle-o"></i>
+         </span>
+      </header>
+      <nav id="sidebar-left">
+         <ul>
+            <li><i class="fa fa-home"></i></li>
+            <li><i class="fa fa-envelope"></i></li>
+            <li><i class="fa fa-eye"></i></li>
+            <li><i class="fa fa-circle-o"></i></li>
+            <li><i class="fa fa-map-marker"></i></li>
+            <li><i class="fa fa-bolt"></i></li>
+            <li><i class="fa fa-cog"></i></li>
+            <li><i class=""></i></li>
+         </ul>
+      </nav>
+      <div id="main">
+         <div id="welcome_message">
+            <h3>Dashboard</h3>
+            <h4>Welcome to freebrander admin panel !</h4>
+         </div>
+         <table>
             <tr id="first_table_row">
-            	<th>RECENT ORDER</th>
-            	<th></th>
-            	<th></th>
-            	<th></th>
-            	<th></th>
-            	<th></th>
-            	<th></th>
-            	<th><button id="new_order_btn">+ New Order</button></th>
+               <th>RECENT ORDER</th>
+               <th></th>
+               <th></th>
+               <th></th>
+               <th></th>
+               <th></th>
+               <th></th>
+               <th><button id="new_order_btn">+ New Order</button></th>
             </tr>
-
-        	<tr>
-        	<th>PRODUCT NAME</th>
-        	<th>PRODUCT CODE</th>
-        	<th>STATUS</th>
-        	<th>PURCHASED ON</th>
-        	<th>PRICE</th>
-        	<th>QUANTITY</th>
-        	<th>TRACKING NO#</th>
-        	</tr>
-            
             <tr>
-            	<td>Leisure Suit Casual</td>
-            	<td>3BSD59</td>
-            	<td><button class="paid">Paid</button></td>
-            	<td>27 Sep 2015</td>
-            	<td>$99.00</td>
-            	<td>2</td>
-            	<td>#BG6R9853LP</td>
+               <th>PRODUCT NAME</th>
+               <th>PRODUCT CODE</th>
+               <th>STATUS</th>
+               <th>PURCHASED ON</th>
+               <th>PRICE</th>
+               <th>QUANTITY</th>
+               <th>TRACKING NO#</th>
             </tr>
-
             <tr>
-            	<td>Contton Fleece Casual</td>
-            	<td>3BHB7G</td>
-            	<td><button class="pending">Pending</button></td>
-            	<td>08 Sep 2015</td>
-            	<td>$99.00</td>
-            	<td>2</td>
-            	<td>#36BQRMB3B</td>
+               <td>Leisure Suit Casual</td>
+               <td>3BSD59</td>
+               <td><button class="paid">Paid</button></td>
+               <td>27 Sep 2015</td>
+               <td>$99.00</td>
+               <td>2</td>
+               <td>#BG6R9853LP</td>
             </tr>
-
             <tr>
-            	<td>Formal Slim Fit Casusal</td>
-            	<td>4D3GHT</td>
-            	<td><button class="paid">Paid</button></td>
-            	<td>25 Aug 2015</td>
-            	<td>$99.00</td>
-            	<td>2</td>
-            	<td>#AXZ6F5BT3V</td>
+               <td>Contton Fleece Casual</td>
+               <td>3BHB7G</td>
+               <td><button class="pending">Pending</button></td>
+               <td>08 Sep 2015</td>
+               <td>$99.00</td>
+               <td>2</td>
+               <td>#36BQRMB3B</td>
             </tr>
-
             <tr>
-            	<td>Volvet Patchwork Causal</td>
-            	<td>5D4H3G</td>
-            	<td><button class="failed">Failed</button></td>
-            	<td>27 Sep 2015</td>
-            	<td>$99.00</td>
-            	<td>2</td>
-            	<td>#SDB9HK561</td>
+               <td>Formal Slim Fit Casusal</td>
+               <td>4D3GHT</td>
+               <td><button class="paid">Paid</button></td>
+               <td>25 Aug 2015</td>
+               <td>$99.00</td>
+               <td>2</td>
+               <td>#AXZ6F5BT3V</td>
             </tr>
-
-        </table>
-
-        <div class="pagination">
-          <a href="#" id="back">&laquo;</a>
-          <a href="#" class="active">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#" id="forward">&raquo;</a>
-        </div>
-        
-        <div class="grid-container">
-
-        	<div class="grid-item item1">
-        		<div class="money">98225</div>
-                <div class="money-title">LAST WEEK'S SALE</div>
+            <tr>
+               <td>Volvet Patchwork Causal</td>
+               <td>5D4H3G</td>
+               <td><button class="failed">Failed</button></td>
+               <td>27 Sep 2015</td>
+               <td>$99.00</td>
+               <td>2</td>
+               <td>#SDB9HK561</td>
+            </tr>
+         </table>
+         <div class="pagination">
+            <a href="#" id="back">&laquo;</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#" id="forward">&raquo;</a>
+         </div>
+         <div class="grid-container">
+            <div class="grid-item item1">
+               <div class="money">98225</div>
+               <div class="money-title">LAST WEEK'S SALE</div>
             </div>
-
-        	<div class="grid-item item2">
-                 <div class="visitor-icon"><i class="fa fa-users"></i></div>
-                 <div class="visitor-title">Visitors</div>
-                 <div class="visitor-number">
-                 	<i class="fa fa-level-up"></i>
-                 	125 K <span class="extra-visitor-number">(+0.50%)</span>
-                 </div>
-        	</div>
-
+            <div class="grid-item item2">
+               <div class="visitor-icon"><i class="fa fa-users"></i></div>
+               <div class="visitor-title">Visitors</div>
+               <div class="visitor-number">
+                  <i class="fa fa-level-up"></i>
+                  125 K <span class="extra-visitor-number">(+0.50%)</span>
+               </div>
+            </div>
             <div class="grid-item item3">
-            	<div>
-                <div class="facebook-icon"><i class="fa fa-facebook-f"></i></div>
-            	<div class="follower-number">10k</div>
-            	</div>
-            	<span class="follower-title">Follow Us</span>
-            </div>  
-            <div class="grid-item item4">4</div>
-            <div class="grid-item item5">5</div>
-            <div class="grid-item item6">
-                <input type="text" name="" placeholder="WRITE SOMETHING...">
-                <div>
-                	<i class="fa fa-camera">UPLOAD</i>
-                	<i class="fa fa-times">CANCEL</i>
-                </div>
+               <div>
+                  <div class="facebook-icon"><i class="fa fa-facebook-f"></i></div>
+                  <div class="follower-number">10k</div>
+               </div>
+               <span class="follower-title">Follow Us</span>
             </div>
-        </div>
+            <div class="grid-item item4">
+            <div class="traffic-title">MONTHLY TRAFFIC</div>
+            <div class="traffic-list">
+               <span class="traffic-source">Mozila Firefox</span>
+               <span class="traffic-source-value">39.8%</span>
+               <br>
 
-     </div>
-</body>
+               <span class="traffic-source">Google Crome</span>
+               <span class="traffic-source-value">26.9%</span>
+               <br>
+
+               <span class="traffic-source">Internet Explorer</span>
+               <span class="traffic-source-value">22.8%</span>
+               <br>
+
+               <span class="traffic-source">Mobile or Tablet</span>
+               <span class="traffic-source-value">3.2%</span>
+               <br>
+
+               <span class="traffic-source">Other</span>
+               <span class="traffic-source-value">0.2%</span>
+               <br>
+
+               <span class="traffic-source">Total Result</span>
+               <span class="traffic-source-value">92.9%</span>
+
+            </div>
+
+         </div>
+            <div class="grid-item item5">
+               <div class="client-order-title">CLIENT'S ORDER OF THE MONTH</div>
+               <div class="client-name">JACK RICHARD</div>
+               <div class="client-order">
+                     <span class="client-item-title">Trade Time</span>
+                     <span class="client-item-name">12:45 PM</span>
+                     <i class="fa fa-square"></i>
+                     <br>
+                     <span class="client-item-title">Country</span>
+                     <span class="client-item-name">England</span>
+                     <i class="fa fa-square"></i>
+                      <br>
+                     <span class="client-item-title">Status</span>
+                     <span class="client-item-name">Approve</span>
+                     <i class="fa fa-square"></i>
+                     <br>
+               </div>
+               <div class="appricate">APPRICATE</div>
+            </div>
+            <div class="grid-item item6">
+               <input type="text" id="send-message" name="" placeholder="WRITE SOMETHING...">
+               <div>
+                  <i class="fa fa-camera"></i><span id="upload">Upload</span>
+                  <i class="fa fa-times">Cancel</i>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
 </html>

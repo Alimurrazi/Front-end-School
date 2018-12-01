@@ -1,0 +1,56 @@
+.deal-title
+{
+	background-color: #36404a;
+	padding: 10px;
+	color: white;
+	margin-bottom: 5px;
+}
+
+.time-setting
+{
+	padding: 10px;
+}
+
+.time
+{
+	font-size: 25px;
+	padding-bottom: 10px;
+}
+
+.was-title,.now-title
+{
+	color:   #00CCCB;
+}
+
+.was,.now
+{
+	padding-top:  10px;
+}
+
+.deal-back,.deal-next
+{
+	background-color: #36404a;
+	color: white;
+}
+
+.deal
+{
+	background-color: #00CCCB;
+	color: white;
+}
+
+.deal-paginate
+{
+	margin-top: 10px;
+}
+
+.deal-paginate td
+{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.deal-result
+{
+	margin-bottom: 15px;
+}

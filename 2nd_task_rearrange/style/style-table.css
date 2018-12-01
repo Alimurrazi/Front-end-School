@@ -1,0 +1,50 @@
+table
+{
+	background-color: white;
+	margin-left: 10px;
+	/*margin:  5px;
+	margin-left: 10px;*/ 
+}
+th,td
+{
+	/*padding: 10px;*/
+	padding: 1%;
+	width: 6%;
+	text-align: center;
+}
+#first_table_row
+{
+	border: 1px solid #ddd;
+}
+
+button
+{
+    padding: 0px;
+    margin: 0px;
+    float:right;
+    width: 123px;
+    background-color: #333d46;
+    color:white;
+    border-color: none;
+        padding-top:12px;
+    padding-left:41px;
+    padding-right:41px;
+    padding-bottom: 12px;
+    border-radius: 18px;
+}
+.paid
+{
+	background-color: #00CCCB;
+}
+.pending
+{
+    background-color: #EEA80C;
+}
+.failed
+{
+    background-color: #FE6732;
+}
+#new_order_btn
+{
+	background-color: black;
+}

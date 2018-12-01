@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
-   <head> 
-      <title>Dashboard</title>
-      <link rel="stylesheet" type="text/css" href="style.css">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   </head>
-   <body>
-      <header>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="style/style-basic.css">
+    <link rel="stylesheet" type="text/css" href="style/style-sidebar.css">
+    <link rel="stylesheet" type="text/css" href="style/style-header.css">
+    <link rel="stylesheet" type="text/css" href="style/style-table.css">
+    <link rel="stylesheet" type="text/css" href="style/style-pagination.css">
+    <link rel="stylesheet" type="text/css" href="style/style-client-item.css">
+    <link rel="stylesheet" type="text/css" href="style/style-traffic.css">
+    <link rel="stylesheet" type="text/css" href="style/style-visitor.css">
+    <link rel="stylesheet" type="text/css" href="style/style-deal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+ 
+       <header>
          <span class="leftPartHeader">
          <i class="fa fa-navicon"></i>
-         <input type="text" name="search" placeholder="search...." aria-label="Search">
+         <input type="text" class="search" placeholder="  search...." aria-label="Search">
          <a href="#">Authors</a>
          <a href="#">My Files</a>
          <a href="#">Trending</a>
@@ -34,6 +44,7 @@
          </ul>
       </nav>
       <div id="main">
+      	<div class="grid-container">
          <div id="welcome_message">
             <h3>Dashboard</h3>
             <h4>Welcome to freebrander admin panel !</h4>
@@ -47,7 +58,7 @@
                <th></th>
                <th></th>
                <th></th>
-               <th><button id="new_order_btn">+ New Order</button></th>
+               <th><button id="new_order_btn">+New Order</button></th>
             </tr>
             <tr>
                <th>PRODUCT NAME</th>
@@ -103,7 +114,8 @@
             <a href="#">4</a>
             <a href="#" id="forward">&raquo;</a>
          </div>
-         <div class="grid-container">
+          </div>
+                  <div class="grid-container">
             <div class="grid-item item1">
                <div class="money">98225</div>
                <div class="money-title">LAST WEEK'S SALE</div>
@@ -126,28 +138,36 @@
             <div class="grid-item item4">
             <div class="traffic-title">MONTHLY TRAFFIC</div>
             <div class="traffic-list">
-               <span class="traffic-source">Mozila Firefox</span>
-               <span class="traffic-source-value">39.8%</span>
-               <br>
-
-               <span class="traffic-source">Google Crome</span>
-               <span class="traffic-source-value">26.9%</span>
-               <br>
-
-               <span class="traffic-source">Internet Explorer</span>
-               <span class="traffic-source-value">22.8%</span>
-               <br>
-
-               <span class="traffic-source">Mobile or Tablet</span>
-               <span class="traffic-source-value">3.2%</span>
-               <br>
-
-               <span class="traffic-source">Other</span>
-               <span class="traffic-source-value">0.2%</span>
-               <br>
-
-               <span class="traffic-source">Total Result</span>
-               <span class="traffic-source-value">92.9%</span>
+               <table>
+               	<tr>
+               		<td>Mozila Firefox</td>
+               		<td>39.8%</td>
+               	</tr>
+               	<tr>
+               		<td>Google Crome</td>
+               		<td>26.9%</td>
+               	</tr>
+               	<tr>
+               		<td>Internet Explorer</td>
+               		<td>22.8%</td>
+               	</tr>
+               	<tr>
+               		<td>Mobile or Tablet</td>
+               		<td>3.2%</td>
+               	</tr>
+               	<tr>
+               		<td>Other</td>
+               		<td>0.2%</td>
+               	</tr>
+               	<tr>
+               		<td></td>
+               		<td></td>
+               	</tr>
+               	<tr id="total-result">
+               		<td>Total Result</td>
+               		<td>92.9%</td>
+               	</tr>
+               </table>
 
             </div>
 
@@ -155,30 +175,87 @@
             <div class="grid-item item5">
                <div class="client-order-title">CLIENT'S ORDER OF THE MONTH</div>
                <div class="client-name">JACK RICHARD</div>
-               <div class="client-order">
-                     <span class="client-item-title">Trade Time</span>
-                     <span class="client-item-name">12:45 PM</span>
-                     <i class="fa fa-square"></i>
-                     <br>
-                     <span class="client-item-title">Country</span>
-                     <span class="client-item-name">England</span>
-                     <i class="fa fa-square"></i>
-                      <br>
-                     <span class="client-item-title">Status</span>
-                     <span class="client-item-name">Approve</span>
-                     <i class="fa fa-square"></i>
-                     <br>
-               </div>
+               
+               <table>
+               	<tr>
+               		<td>Trade Time</td>
+               		<td><i class="fa fa-square"></i></td>
+               		<td>12:45 PM</td>
+               	</tr>
+               	               	<tr>
+               		<td>Country</td>
+               		<td><i class="fa fa-square"></i></td>
+               		<td>England</td>
+               	</tr>
+               	    <tr>
+               		<td>Status</td>
+               		<td><i class="fa fa-square"></i></td>
+               		<td>Approve</td>
+               		</tr>
+               </table> 
                <div class="appricate">APPRICATE</div>
             </div>
             <div class="grid-item item6">
                <input type="text" id="send-message" name="" placeholder="WRITE SOMETHING...">
                <div>
                   <i class="fa fa-camera"></i><span id="upload">Upload</span>
-                  <i class="fa fa-times">Cancel</i>
+                  <i class="fa fa-times"><span id="cancel">Cancel</span></i>
                </div>
             </div>
+            <div class="grid-item item7">
+            	<div class="deal-title">
+            		DEAL ENDS IN
+            	</div>
+            	<div class="time-setting">
+            		Time Setting
+            	</div>
+            	<div class="deal-time">
+                  <div class="time">
+                  	<table>
+                  		<tr>
+                  			<td>01</td>
+                  			<td>:</td>
+                  			<td>18</td>
+                  			<td>:</td>
+                  			<td>43</td>
+                  			<td>:</td>
+                  			<td>02</td>
+                  		</tr>
+                  		<tr>
+                  			<td>Day</td>
+                  			<td></td>
+                  			<td>Hrs</td>
+                  			<td></td>
+                  			<td>Min</td>
+                  			<td></td>
+                  			<td>Sec</td>
+                  		</tr>
+                  	</table>
+
+                  </div>
+                  <div class="deal-result">
+                  	<span class="was"><span class="was-title">Was: </span>$288</span>
+                  	<span class="now"><span class="now-title">Now: </span>$199</span>
+                  </div>
+                  <br>
+                  <div class="deal-paginate">
+                  	<table>
+                  		<tr>
+                  			<td class="deal-back"><i class="fa fa-chevron-left"></i></td>
+                  			<td  class="deal"><span>DEAL</span></td>
+                  			<td class="deal-next"><i class="fa fa-chevron-right"></i></td>
+                  		</tr>
+                  	</table>
+
+                  </div>
+                  </div>
+            	</div>
+                <!--
+                <div class="grid-item item8">
+                	<img src="graph.jpg">
+                </div>  -->
+
+            </div>
          </div>
-      </div>
-   </body>
+</body>
 </html>

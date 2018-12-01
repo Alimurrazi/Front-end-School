@@ -1,0 +1,11 @@
+.traffic-title
+{
+	background-color: #36404a;
+	color: white;
+	padding: 10px;
+    margin-bottom: 5px; 
+}
+
+tr#total-result>td {
+  padding-top: 5em;
+}

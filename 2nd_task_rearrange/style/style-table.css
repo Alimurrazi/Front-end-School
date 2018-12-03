@@ -12,11 +12,15 @@ th,td
 	width: 6%;
 	text-align: center;
 }
-#first_table_row
+.first_table_row th
 {
-	border: 1px solid #ddd;
+    border-top: thin solid;
+    border-bottom: thin solid; 
 }
-
+.second_table_row th
+{
+    border-bottom: thin solid; 
+}
 button
 {
     padding: 0px;

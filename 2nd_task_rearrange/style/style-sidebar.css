@@ -6,16 +6,17 @@
 	height: 100%;
 	overflow: auto;
 	text-align: center;
+	width: 5%;
 }*/
+
 
 #sidebar-left {
 	float: left;
 	width: 5%;
 	background-color: #364049;
 	height: 100%;
-	/*z-index: 1;*/
+    z-index: 1;
 	position: fixed;
-	/*top: 10%;*/
     top: 0;
 	left: 0;
 	overflow-x: hidden;

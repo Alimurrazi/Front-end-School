@@ -1,64 +1,81 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Todo App</title>
-	<link rel="stylesheet" type="text/css" href="style/style-basic.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
- <div class="container">
- 	<div class="grid title-icon">
- 		<i class="fa fa-check" aria-hidden="true"></i>
- 	</div>
- 	<div class="grid title">
- 		<!--<label>To do</label>-->
- 		<h2>To do</h2>
- 	</div>
- 	<div class="grid type-task">
- 		<input type="text" name="" placeholder="type task">
- 	</div>
- 	<div class="grid add-task">
- 		<button>Add New Task</button>
- 	</div>
- 	<div class="grid task-category">
- 		<span class="all">
- 			All
- 		</span>
- 		<span class="completed">
- 		    Completed	
- 		</span>
- 		<span class="active">
- 			Active
- 		</span>
+   <head>
+      <title>Todo App</title>
+      <link rel="stylesheet" type="text/css" href="style/style-basic.css">
+      <link rel="stylesheet" type="text/css" href="style/style-title.css">
+      <link rel="stylesheet" type="text/css" href="style/style-type-add.css">
+      <link rel="stylesheet" type="text/css" href="style/style-task-list.css">
+      <link rel="stylesheet" type="text/css" href="style/style-modal.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body>
+      <!--
+          <div class="modal">
+        <div class="modal-content">
+            <div class="edit">
+               <i class="fa fa-pencil" aria-hidden="true"></i><span class="edit-label">Edit</span>
+            </div>
+            <div class="interval">
+               interval
+            </div>
+            <div class="delete">
+               <i class="fa fa-trash" aria-hidden="true"></i><span class="delete-label">Delete</span>
+            </div>
+        </div>
+    </div>-->
 
- 	</div>
- 	<div class="grid task-list">
- 		<ul>
- 			<li>
- 							<span class="category-icon"><i class="fa fa-check" aria-hidden="true"></i></span>
- 			<span class="category-label">Wake up</span>
- 			<span class="category-modal-icon"><i class="fa fa-check" aria-hidden="true"></i></</span>
- 			</li>
- 			<li>
- 				 							<span class="category-icon"><i class="fa fa-check" aria-hidden="true"></i></span>
- 			<span class="category-label">Wake up</span>
- 			<span class="category-modal-icon"><i class="fa fa-check" aria-hidden="true"></i></</span>
- 			</li>
- 		</ul>
- 		<!--
- 		<div class="item">
- 			<span class="category-icon"><i class="fa fa-check" aria-hidden="true"></i></span>
- 			<span class="category-label">Wake up</span>
- 			<span class="category-modal-icon"><i class="fa fa-check" aria-hidden="true"></i></</span>
- 		</div>
- 		 <div class="item">
- 			<span class="category-icon"><i class="fa fa-check" aria-hidden="true"></i></span>
- 			<span class="category-label">Wake up</span>
- 			<span class="category-modal-icon"><i class="fa fa-check" aria-hidden="true"></i></</span>
- 		</div>
- 	-->
- 	</div>
- </div>
-</body>
+      <div class="container">
+         <div class="grid title-icon">
+            <i class="fa fa-check" aria-hidden="true"></i>
+         </div>
+         <div class="grid title">
+            <h2>To do</h2>
+         </div>
+         <div class="grid type-task">
+            <input type="text" name="" placeholder="type task" class="type-new-task">
+         </div>
+         <div class="grid add-task">
+            <button id="add-btn"><label class="add-btn-label">Add New Task</label></button>
+         </div>
+         <div class="grid task-category">
+            <nav>
+            <span class="all clicked">
+            All
+            </span>
+            <span class="completed">
+            Completed	
+            </span>
+            <span class="active">
+            Active
+            </span>
+            </nav>
+         </div>
+         <div class="grid task-list">
+            <ul>
+               <li class="specific-task">
+                  <span class="category-icon"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+                  <span class="category-label">Wake up</span>
+                  <span class="category-modal-icon trigger"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></span>
+               </li>
+               <li class="specific-task">
+                  <span class="category-icon"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
+                  <span class="category-label">Wake up</span>
+                  <span class="category-modal-icon trigger"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></span>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </body>
    <script type="text/javascript" src="app.js"></script>
+   <script type="text/javascript">
+/*
+      var buttonHeight = document.getElementById('add-btn').clientHeight;
+      console.log(buttonHeight);
+      var allTask = document.getElementsByClassName('specific-task');
+      for (var i = 0; i <allTask.length; i++) {
+                  allTask[i].style.height = buttonHeight+"px";
+      }
+  */       
+   </script>
 </html>

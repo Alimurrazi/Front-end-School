@@ -1,0 +1,21 @@
+.title-icon
+{
+	grid-column: 1;
+	grid-row: 1;
+	width: 80px;
+	height: 70px;
+	font-size: 60px;
+	text-align: center;
+	color: white;
+	background-color: 	#9453CE;
+	border-radius: 10%;
+
+}
+.title
+{
+	grid-column: 2 / span 2;
+	grid-row: 1;
+	color: white;
+	text-align: center;
+	font-size: 30px;
+}

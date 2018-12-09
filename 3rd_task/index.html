@@ -9,7 +9,7 @@
       <link rel="stylesheet" type="text/css" href="style/style-modal.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
-   <body>
+   <body onload="init()">
       <!--
           <div class="modal">
         <div class="modal-content">
@@ -25,19 +25,21 @@
         </div>
     </div>-->
 
-      <div class="container">
+<!--
          <div class="grid title-icon">
             <i class="fa fa-check" aria-hidden="true"></i>
          </div>
+
+
          <div class="grid title">
             <h2>To do</h2>
-         </div>
+         </div> 
          <div class="grid type-task">
             <input type="text" name="" placeholder="type task" class="type-new-task">
-         </div>
+         </div> 
          <div class="grid add-task">
             <button id="add-btn"><label class="add-btn-label">Add New Task</label></button>
-         </div>
+         </div> 
          <div class="grid task-category">
             <nav>
             <span class="all clicked">
@@ -50,7 +52,7 @@
             Active
             </span>
             </nav>
-         </div>
+         </div> 
          <div class="grid task-list">
             <ul>
                <li class="specific-task">
@@ -64,18 +66,8 @@
                   <span class="category-modal-icon trigger"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></span>
                </li>
             </ul>
-         </div>
-      </div>
+         </div>-->
+
    </body>
    <script type="text/javascript" src="app.js"></script>
-   <script type="text/javascript">
-/*
-      var buttonHeight = document.getElementById('add-btn').clientHeight;
-      console.log(buttonHeight);
-      var allTask = document.getElementsByClassName('specific-task');
-      for (var i = 0; i <allTask.length; i++) {
-                  allTask[i].style.height = buttonHeight+"px";
-      }
-  */       
-   </script>
 </html>

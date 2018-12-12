@@ -22,10 +22,7 @@
 	padding: 0;
 	border: 0;
 	cursor: pointer;
-}
-.add-btn-label
-{
-    font-size: 20px;
+	font-size: 20px;
     color: white;
 }
 .type-task input

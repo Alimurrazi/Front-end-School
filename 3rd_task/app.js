@@ -40,7 +40,7 @@
 
  function typeTaskView()
  {
-    var typeTaskContent =          '<div class="grid type-task">'+
+    var typeTaskContent = '<div class="grid type-task">'+
             '<input type="text" name="" placeholder="type task" class="type-new-task id="typeNewTask">'+
          '</div>';
     container.innerHTML += typeTaskContent;
@@ -71,10 +71,10 @@ window.addEventListener('input', function (e) {
     else
     {
     var value = document.getElementsByTagName('input')[0].value;
-    if(value!=null)
+    if(value!="")
     {
-        console.log(value);
-    var allTask=JSON.parse(localStorage.getItem("allTask"));
+    console.log(value);
+    var allTask = JSON.parse(localStorage.getItem("allTask"));
  
     if(allTask==null)
         allTask = [];
@@ -130,12 +130,12 @@ function updateTask()
         if(allTask[i].status == 1)
         {
             count++;
-            specificTaskContent = '<li class="specific-task">'+
-                  '<span class="category-icon"'+'id="'+i+'"onclick="changeState()">'+
+            specificTaskContent = '<li class="specific-task" id="'+i+'">'+
+                  '<span class="category-icon" onclick="changeState("'+i+')">'+
                   '<i class="fa fa-circle-o" aria-hidden="true"></i></span>'+
                   '<span class="category-label">'+allTask[i].title+'</span>'+
-                  '<input type="hidden" value="'+i+'">'+
-                  '<span class="category-modal-icon trigger">'+
+                 // '<span class="category-modal-icon trigger">'+
+                  '<span class="category-icon" onclick="changeState("'+i+')">'+
                   '<i class="fa fa-ellipsis-v">'+
                   '</i><i class="fa fa-ellipsis-v"></i></span></li>';
 
@@ -148,11 +148,9 @@ function updateTask()
         {
             count++;
             specificTaskContent = '<li class="specific-task">'+
-                //  '<span class="category-icon" onclick="changeState()">'+
-                  '<span class="category-icon"'+'id="'+i+'"onclick="changeState()">'+
+                  '<span class="category-icon" onclick="changeState("'+i+')">'+
                   '<i class="fa fa-check-circle" aria-hidden="true"></i></span>'+
                   '<span class="category-label">'+allTask[i].title+'</span>'+
-                  '<input type="hidden" value="'+i+'">'+
                   '<span class="category-modal-icon trigger">'+
                   '<i class="fa fa-ellipsis-v">'+
                   '</i><i class="fa fa-ellipsis-v"></i></span></li>';
@@ -172,7 +170,7 @@ function updateTask()
  function addTaskView()
 {
     var addTaskContent = '         <div class="grid add-task">'+
-            '<button id="add-btn" onclick="addTask()"><label class="add-btn-label" id="addBtnLabel">Add New Task</label></button>'
+            '<button id="add-btn" onclick="addTask()">Add New Task</button>'
          '</div>';
     container.innerHTML += addTaskContent;
     taskCategoryView();     

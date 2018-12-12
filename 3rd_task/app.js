@@ -47,19 +47,6 @@
     addTaskView();     
  }
 
-window.addEventListener('input', function (e) {
-    var addBtnLabel = document.getElementById('addBtnLabel');
-    var typeNewTaskValue = document.getElementsByTagName('input')[0].value;
-    if(typeNewTaskValue == "")
-    {
-       addBtnLabel.innerHTML = "Add New Task";
-    }
-    else
-    {
-       addBtnLabel.innerHTML = "Save";
-    }
-}, false);
-
  function addTask()
  {
     console.log(isEdit);
@@ -73,6 +60,7 @@ window.addEventListener('input', function (e) {
     var value = document.getElementsByTagName('input')[0].value;
     if(value!="")
     {
+     document.getElementsByTagName('input')[0].value = ""; 
     console.log(value);
     var allTask = JSON.parse(localStorage.getItem("allTask"));
  
@@ -94,15 +82,7 @@ window.addEventListener('input', function (e) {
 
 function updateTask()
 {
-/*
-        console.log("kkkk");
-  var contactId=document.getElementById("update-indexNumber").value;
-  var contacts=JSON.parse(localStorage.getItem("allContactLS"));
-    contacts[contactId].firstName=document.getElementById("update-firstName").value;
-    contacts[contactId].lastName=document.getElementById("update-lastName").value;
-    contacts[contactId].phoneNumber=document.getElementById("update-phoneNumber").value;
-    localStorage.setItem("allContactLS",JSON.stringify(contacts));
-*/
+        debugger;
         console.log(currentIndex);
         var allTask = JSON.parse(localStorage.getItem("allTask"));
         allTask[currentIndex].title = document.getElementsByTagName('input')[0].value;
@@ -134,8 +114,7 @@ function updateTask()
                   '<span class="category-icon" onclick="changeState("'+i+')">'+
                   '<i class="fa fa-circle-o" aria-hidden="true"></i></span>'+
                   '<span class="category-label">'+allTask[i].title+'</span>'+
-                 // '<span class="category-modal-icon trigger">'+
-                  '<span class="category-icon" onclick="changeState("'+i+')">'+
+                  '<span class="category-modal-icon trigger" onclick="changeState("'+i+')">'+
                   '<i class="fa fa-ellipsis-v">'+
                   '</i><i class="fa fa-ellipsis-v"></i></span></li>';
 
@@ -147,14 +126,13 @@ function updateTask()
         else
         {
             count++;
-            specificTaskContent = '<li class="specific-task">'+
+            specificTaskContent = '<li class="specific-task" id="'+i+'">'+
                   '<span class="category-icon" onclick="changeState("'+i+')">'+
                   '<i class="fa fa-check-circle" aria-hidden="true"></i></span>'+
                   '<span class="category-label">'+allTask[i].title+'</span>'+
-                  '<span class="category-modal-icon trigger">'+
+                  '<span class="category-modal-icon trigger" onclick="changeState("'+i+')">'+
                   '<i class="fa fa-ellipsis-v">'+
                   '</i><i class="fa fa-ellipsis-v"></i></span></li>';
-
 
             taskListContent.innerHTML += specificTaskContent;
 
@@ -169,7 +147,7 @@ function updateTask()
 
  function addTaskView()
 {
-    var addTaskContent = '         <div class="grid add-task">'+
+    var addTaskContent = '<div class="grid add-task">'+
             '<button id="add-btn" onclick="addTask()">Add New Task</button>'
          '</div>';
     container.innerHTML += addTaskContent;
@@ -199,18 +177,6 @@ function taskListView()
 {
     var taskListContent = '<div class="grid task-list">'+
             '<ul id="taskList">'+
-            /*
-               '<li class="specific-task">'+
-                  '<span class="category-icon"><i class="fa fa-check-circle" aria-hidden="true"></i></span>'+
-                  '<span class="category-label">Wake up</span>'+
-                  '<span class="category-modal-icon trigger"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></span>'+
-               '</li>'+
-               '<li class="specific-task">'+
-                  '<span class="category-icon"><i class="fa fa-circle-o" aria-hidden="true"></i></span>'+
-                  '<span class="category-label">Wake up</span>'+
-                  '<span class="category-modal-icon trigger"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></span>'+
-               '</li>'+
-              */ 
             '</ul>'+
          '</div>'
     container.innerHTML += taskListContent;
@@ -244,10 +210,16 @@ function taskListView()
 
     for(var i = 0;i<allTrigger.length; i++)
     {
-    allTrigger[i].addEventListener("click", toggleModal);
+    allTrigger[i].addEventListener("click", updateListItem);
     }
     window.addEventListener("click", windowOnClick);
+  }
 
+  function updateListItem()
+  {
+    console.log(this.parentNode.getAttribute('id'));
+    currentIndex = this.parentNode.getAttribute('id');
+    toggleModal();
   }
 
     function toggleModal() {
@@ -260,19 +232,6 @@ function taskListView()
             toggleModal();
         }
     }
-
-        document.onclick = function(e) {
-        if(e.target.class = "fa-ellipsis-v")
-        {
-            var value = e.target.parentNode.parentNode.getElementsByTagName('input')[0];
-            if(value)
-            {
-              value = value.value;
-              if(isNaN(value)===false)
-                currentIndex = value;
-            }
-        }
-       }
      
      function deleteTask()
      {
@@ -291,6 +250,7 @@ function taskListView()
         var taskValue = allTask[currentIndex];
         console.log(taskValue);
         document.getElementsByTagName('input')[0].value = taskValue.title;
+        document.getElementById('add-btn').innerHTML = "Save";
         isEdit = true;
         toggleModal();
      }
@@ -308,29 +268,6 @@ function taskListView()
 
         showData();
      }
-
-/*
-     function completed()
-     {
-     
-      var completed = document.getElementsByClassName('completed')[0];
-      completed.classList.add("clicked");
-
-        var all = document.getElementsByClassName('all')[0];
-        var check = all.classList.contains("clicked");
-        if(check)
-        {
-          all.classList.remove("clicked");
-          showCompletedTask();
-        }
-        var active = document.getElementsByClassName('active')[0];
-        var check = active.classList.contains("clicked");
-        if(check)
-        {
-
-        }
-
-     }*/
 
      function completed()
      {

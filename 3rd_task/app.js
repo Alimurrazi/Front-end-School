@@ -85,53 +85,10 @@ function updateTask() {
     showData();
 }
 
-function all()
-{
-   currentCategory = "all";
-
-    var allTask = JSON.parse(localStorage.getItem("allTask"));
-    var taskListContent = document.getElementById("taskList");
-    taskListContent.innerHTML = "";
-    var count = 0;
-
-    if (allTask != null) {
-        for (var i = 0; i < allTask.length; i++) {
-            var specificTaskContent;
-            if (allTask[i].status == 1) {
-                count++;
-                specificTaskContent = '<li class="specific-task" id="' + i + '">' +
-                    '<span class="category-icon" onclick="changeState(' + i + ')">' +
-                    '<i class="fa fa-circle-o" aria-hidden="true"></i></span>' +
-                    '<span class="category-label">' + allTask[i].title + '</span>' +
-                    '<span class="category-modal-icon trigger">' +
-                    '<i class="fa fa-ellipsis-v">' +
-                    '</i><i class="fa fa-ellipsis-v"></i></span></li>';
-
-                taskListContent.innerHTML += specificTaskContent;
-
-                if (count == allTask.length)
-                    addClickModal();
-            } else {
-                count++;
-                specificTaskContent = '<li class="specific-task" id="' + i + '">' +
-                    '<span class="category-icon" onclick="changeState(' + i + ')">' +
-                    '<i class="fa fa-check-circle" aria-hidden="true"></i></span>' +
-                    '<span class="category-label">' + allTask[i].title + '</span>' +
-                    '<span class="category-modal-icon trigger">' +
-                    '<i class="fa fa-ellipsis-v">' +
-                    '</i><i class="fa fa-ellipsis-v"></i></span></li>';
-
-                taskListContent.innerHTML += specificTaskContent;
-
-                if (count == allTask.length)
-                    addClickModal();
-            }
-        }
-    }
-}
-
 function showData() {
-   
+    
+   // currentCategory = this.getAttribute("id");
+    console.log(this);
    //var currentClicked = document.getElementsByClassName("clicked")[0];
    //currentClicked.classList.remove("clicked");
    //console.log(currentClicked.classList);
@@ -140,7 +97,7 @@ function showData() {
    {
    // var currentCategoryClass = document.getElementById("all");
    // currentCategoryClass.classList.add("clicked");
-    all();
+    allData();
    }
    if(currentCategory == "completed")
    {
@@ -168,7 +125,7 @@ function addTaskView() {
 function taskCategoryView() {
     var taskCategoryContent = '<div class="grid task-category">' +
         '<nav>' +
-        '<span class="all" id="all" onclick="showData()" >' +
+        '<span class="all" id="all" onclick="allData()" >' +
         'All' +
         '</span>' +
         '<span class="completed" id="completed" onclick="completed()" >' +
@@ -180,6 +137,9 @@ function taskCategoryView() {
         '</nav>' +
         '</div>';
     container.innerHTML += taskCategoryContent;
+    //document.getElementsByClassName("all")[0].addEventListener("click",showData);
+    //document.getElementById("completed").addEventListener("click",showData);
+    //document.getElementById("active").addEventListener("click",showData);
     taskListView();
 }
 
@@ -266,7 +226,51 @@ function changeState(index) {
     showData();
 }
 
+function allData()
+{
+    
+   currentCategory = "all";
 
+    var allTask = JSON.parse(localStorage.getItem("allTask"));
+    var taskListContent = document.getElementById("taskList");
+    taskListContent.innerHTML = "";
+    var count = 0;
+
+    if (allTask != null) {
+        for (var i = 0; i < allTask.length; i++) {
+            var specificTaskContent;
+            if (allTask[i].status == 1) {
+                count++;
+                specificTaskContent = '<li class="specific-task" id="' + i + '">' +
+                    '<span class="category-icon" onclick="changeState(' + i + ')">' +
+                    '<i class="fa fa-circle-o" aria-hidden="true"></i></span>' +
+                    '<span class="category-label">' + allTask[i].title + '</span>' +
+                    '<span class="category-modal-icon trigger">' +
+                    '<i class="fa fa-ellipsis-v">' +
+                    '</i><i class="fa fa-ellipsis-v"></i></span></li>';
+
+                taskListContent.innerHTML += specificTaskContent;
+
+                if (count == allTask.length)
+                    addClickModal();
+            } else {
+                count++;
+                specificTaskContent = '<li class="specific-task" id="' + i + '">' +
+                    '<span class="category-icon" onclick="changeState(' + i + ')">' +
+                    '<i class="fa fa-check-circle" aria-hidden="true"></i></span>' +
+                    '<span class="category-label">' + allTask[i].title + '</span>' +
+                    '<span class="category-modal-icon trigger">' +
+                    '<i class="fa fa-ellipsis-v">' +
+                    '</i><i class="fa fa-ellipsis-v"></i></span></li>';
+
+                taskListContent.innerHTML += specificTaskContent;
+
+                if (count == allTask.length)
+                    addClickModal();
+            }
+        }
+    }
+}
 
 function completed() {
 

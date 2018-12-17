@@ -88,7 +88,6 @@ function updateTask() {
 function showData() {
     
    // currentCategory = this.getAttribute("id");
-    console.log(this);
    //var currentClicked = document.getElementsByClassName("clicked")[0];
    //currentClicked.classList.remove("clicked");
    //console.log(currentClicked.classList);
@@ -125,7 +124,7 @@ function addTaskView() {
 function taskCategoryView() {
     var taskCategoryContent = '<div class="grid task-category">' +
         '<nav>' +
-        '<span class="all" id="all" onclick="allData()" >' +
+        '<span class="all clicked" id="all" onclick="allData()" >' +
         'All' +
         '</span>' +
         '<span class="completed" id="completed" onclick="completed()" >' +
@@ -228,8 +227,15 @@ function changeState(index) {
 
 function allData()
 {
+    //var id = document.querySelectorAll('*[id]')[2].getAttribute("id");
+   // if(id=="all")
+   // console.log("equal");
+   // console.log(document.querySelector("#all"));
+     // document.getElementById("all").classList.add("clicked");
+    document.getElementsByClassName("clicked")[0].classList.remove("clicked");
+    document.getElementById("all").classList.add("clicked");
     
-   currentCategory = "all";
+    currentCategory = "all";
 
     var allTask = JSON.parse(localStorage.getItem("allTask"));
     var taskListContent = document.getElementById("taskList");
@@ -273,6 +279,9 @@ function allData()
 }
 
 function completed() {
+    
+    document.getElementsByClassName("clicked")[0].classList.remove("clicked");
+    document.getElementById("completed").classList.add("clicked");
 
     currentCategory = "completed";
 
@@ -302,6 +311,9 @@ function completed() {
 
 function active() {
     
+    document.getElementsByClassName("clicked")[0].classList.remove("clicked");
+    document.getElementById("active").classList.add("clicked");
+
     currentCategory = "active";
 
     var allTask = JSON.parse(localStorage.getItem("allTask"));

@@ -27,16 +27,20 @@ var getDataService = /** @class */ (function () {
         });
     };
     getDataService.prototype.getRepoData = function (userName) {
-        var repoInfo;
+        var repoInfo = new Array();
         request.get('https://api.github.com/users/' + userName + '/repos', security, function (error, response, body) {
-            var length;
-            length = _.size(body);
-            for (var i = 0; i < length; i++) {
-                var repo = new Repo_1.Repo(body[i]);
-                // console.log(repo);
-                repoInfo[i] = repo;
+            if (error != null)
+                console.log(error);
+            else {
+                var length;
+                length = _.size(body);
+                //  console.log(body);
+                for (var i = 0; i < length; i++) {
+                    var repo = new Repo_1.Repo(body[i]);
+                    repoInfo.push(repo);
+                }
+                console.log(repoInfo);
             }
-            console.log(repoInfo);
         });
     };
     return getDataService;

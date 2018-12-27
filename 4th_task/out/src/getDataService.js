@@ -8,12 +8,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var request = __importStar(require("request"));
+var User_1 = require("./User");
 var getDataService = /** @class */ (function () {
     function getDataService() {
     }
     getDataService.prototype.getUserData = function (userName) {
-        request.get('https://api.github.com/users' + userName, function (response) {
-            console.log(response);
+        var security = {
+            headers: {
+                'User-Agent': 'request'
+            },
+            json: true
+        };
+        request.get('https://api.github.com/users/' + userName, security, function (error, response, body) {
+            console.log(body);
+            var user = new User_1.User(body);
+            console.log(user);
         });
     };
     return getDataService;

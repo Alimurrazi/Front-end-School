@@ -2,6 +2,7 @@ import * as request from 'request';
 import * as _ from 'lodash';
 import { User } from "./User";
 import { Repo } from "./Repo";
+import {Promise} from 'es6-promise';
 
 var security: any = {
     headers: {
@@ -11,12 +12,40 @@ var security: any = {
 }
 
 export class getDataService {
+
     getUserData(userName: string) {
+        /*
         request.get('https://api.github.com/users/' + userName, security, (error: any, response: any, body: any) => {
-            var user = new User(body);
-            console.log(user);
-        })
+            console.log("statusCode.....");
+            console.log(response.statusCode);
+            if(response.statusCode == 200)
+            {
+                var user = new User(body);
+            //    console.log(user);
+                return user;
+            }
+            else
+            {
+                console.log(response.statusCode);
+            }
+        })*/
+        return new Promise(function(resolve, reject){
+            request.get('https://api.github.com/users/' + userName, security, (error: any, response: any, body: any) => {
+                    if(response.statusCode == 200)
+                    {
+                        var user = new User(body);
+                        return resolve(user);
+                    }
+                    else
+                    {
+                        return reject(error);
+                    }
+            })
+        });
+
     }
+
+
 
     getRepoData(userName: string) {
         var repoInfo = new Array();

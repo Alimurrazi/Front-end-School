@@ -34,24 +34,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var getDataService_1 = require("./getDataService");
+var _ = __importStar(require("lodash"));
+var User_1 = require("./User");
+var Repo_1 = require("./Repo");
 var data = new getDataService_1.getDataService();
-/*
-var userData:any = data.getUserData("alimurrazi1");
-console.log(userData);
-*/
-function init() {
+function getUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var userData, error_1;
+        var user, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, data.getUserData("alimurrazi1")];
+                    return [4 /*yield*/, data.getUserData("alimurrazi")];
                 case 1:
-                    userData = _a.sent();
-                    console.log(userData);
+                    user = _a.sent();
+                    user = new User_1.User(user);
+                    console.log(user);
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
@@ -62,5 +69,32 @@ function init() {
         });
     });
 }
-init();
-//data.getRepoData("alimurrazi");
+function getRepo() {
+    return __awaiter(this, void 0, void 0, function () {
+        var repo, repoInfo, length, i, singleRepo, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, data.getRepoData("alimurrazi")];
+                case 1:
+                    repo = _a.sent();
+                    repoInfo = new Array();
+                    length = _.size(repo);
+                    for (i = 0; i < length; i++) {
+                        singleRepo = new Repo_1.Repo(repo[i]);
+                        repoInfo.push(singleRepo);
+                    }
+                    console.log(repoInfo);
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_2 = _a.sent();
+                    console.log(error_2);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+getUser();
+getRepo();

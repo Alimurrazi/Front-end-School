@@ -21,4 +21,9 @@ export class AppComponent {
     },2000)
   }
 
+  sidebarIconToggle()
+  {
+     debugger;
+  }
+
 }

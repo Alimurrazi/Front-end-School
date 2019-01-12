@@ -1,57 +1,57 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--
-<mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" class="app-sidenav">
-    <mat-nav-list>
-        <a md-list-item href="page1.html">Page 1</a>
-        <a md-list-item href="page2.html">Page 2</a>
-        <a md-list-item href="page3.html">Page 3</a>
-    </mat-nav-list>
-        </mat-sidenav>
-        <mat-toolbar color="primary">
-            <button mat-icon-button (click)="sidenav.toggle()">
-                <mat-icon class="md-24" >menu</mat-icon>
-            </button>
-        </mat-toolbar>
-</mat-sidenav-container>  -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{title}}</span>
 
-<!--
-<mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <p>Auto-resizing sidenav</p>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-      <button type="button" mat-button (click)="drawer.toggle()">
-        Toggle sidenav
-      </button>
+    <span class="example-spacer"></span>
+
+    <button mat-button>About</button>
+    <button mat-button>Services</button>
+    <button mat-button>Contact</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-sidenav-container">
+  <mat-sidenav #snav>
+    <div class="sidebar-image">
+      <img src="http://lorempixel.com/400/200/city" alt="placeholder image" />
     </div>
-  </mat-drawer-container>
+    <div class="sidebar-profile">
+      <h2 class="profile-name">John Doe</h2>
+    </div>
 
-<mat-toolbar>
-    <span>My Application</span>
-  </mat-toolbar>
--->
+    <ul>
+      <li><a href="#"><mat-icon>all_inbox</mat-icon>Inbox</a></li>
+      <li><a href="#"><mat-icon>stars</mat-icon>Starred</a></li>
+      <li><a href="#"><mat-icon>call</mat-icon>Call</a></li>
+      <li><a href="#"><mat-icon>drafts</mat-icon>Draft</a></li>
+      <li><a href="#"><mat-icon>send</mat-icon>Send</a></li>
+    </ul>
 
-<div [class]="theme">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-<mat-card>
-  <button mat-raised-button color="primary">Primary</button>
-  <button mat-raised-button color="accent">Accent</button>
-  <button mat-raised-button color="warn">Warn</button>
-</mat-card>
-<br>
-<mat-card>
-<!--<mat-select placeholder="choose Theme" [(ngModel)]="theme" onchange="onThemeChange(theme)">-->
-    <mat-form-field>
-  <mat-select placeholder="choose Theme" [(ngModel)]="theme" (selectionChange)="onThemeChange(theme)">
-  <mat-option value="custom-theme-light">Custom Theme Light</mat-option>
-  <mat-option value="custom-theme-dark">Custom Theme Dark</mat-option>
-</mat-select>
-</mat-form-field>
-</mat-card>
-</div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div [class]="theme">
+      <h1>
+        Welcome to {{ title }}!
+      </h1>
+      <mat-card>
+        <button mat-raised-button color="primary">Primary</button>
+        <button mat-raised-button color="accent">Accent</button>
+        <button mat-raised-button color="warn">Warn</button>
+      </mat-card>
+      <br>
+      <mat-card>
+        <mat-form-field>
+          <mat-select placeholder="choose Theme" [(ngModel)]="theme" (selectionChange)="onThemeChange(theme)">
+            <mat-option value="custom-theme-light">Custom Theme Light</mat-option>
+            <mat-option value="custom-theme-dark">Custom Theme Dark</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 <router-outlet></router-outlet>

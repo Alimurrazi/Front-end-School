@@ -18,4 +18,10 @@
   </li>
 </ul>
 
+<ul>
+  <li class="text" *ngFor="let person of persons | async">
+    {{person.FirstName}}
+  </li>
+</ul>
+
 <router-outlet></router-outlet>

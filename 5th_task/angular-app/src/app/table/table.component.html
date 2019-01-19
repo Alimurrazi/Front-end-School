@@ -1,23 +1,26 @@
-<!--
-<ul>
-  <li class="text" *ngFor="let person of persons | async">
-    {{person.LastName}}
-  </li>
-</ul>  -->
+<button mat-raised-button color="accent" (click)="addOne()">Add Hacker to Firestore</button>
 
-<mat-table #table [dataSource]="dataSource">
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
 
-  <ng-container matColumnDef="firstName">
-    <mat-header-cell *matHeaderCellDef>FirstName</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.FirstName}} </mat-cell>
-  </ng-container>
+  <mat-table #table [dataSource]="dataSource" matSort [trackBy]="trackByUid" class="animate">
 
-  <ng-container matColumnDef="lastName">
-    <mat-header-cell *matHeaderCellDef>LastName</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.LastName}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="FirstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let hacker"> {{ hacker.FirstName }} </mat-cell>
+    </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-</mat-table>
+    <ng-container matColumnDef="LastName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> age </mat-header-cell>
+      <mat-cell *matCellDef="let hacker"> {{ hacker.LastName }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="animate"></mat-row>
+  </mat-table>
+</div>

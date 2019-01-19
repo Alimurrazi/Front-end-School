@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { PersonDataService } from '../person-data.service';
@@ -11,10 +11,11 @@ import { MatTableDataSource, MatSort, MatDialog } from '@angular/material';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-//  displayedColumns = ['FirstName', 'LastName', 'Email', 'Geneder', 'DOB', 'Email', 'Phone']
- 
+  //  displayedColumns = ['FirstName', 'LastName', 'Email', 'Geneder', 'DOB', 'Email', 'Phone']
+
   displayedColumns = ['FirstName', 'LastName'];
   dataSource: MatTableDataSource<any>;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private db: AngularFirestore) {
     //  this.persons = db.collection('persons').valueChanges();
@@ -22,20 +23,16 @@ export class TableComponent implements OnInit {
     //  console.log(this.persons);
   }
 
-  ngOnInit(){
-    debugger;
-    this.db.collection<any>('persons').valueChanges().subscribe(data=>{
+  ngOnInit() {
+    this.db.collection<any>('persons').valueChanges().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      //  this.dataSource = this.ELEMENT_DATA;
       console.log(data);
+      console.log(this.dataSource);
+      //  return this.dataSource;
     })
   }
 
-  ngAfterViewInit(){
-    debugger;
-    this.db.collection<any>('persons').valueChanges().subscribe(data=>{
-      this.dataSource = new MatTableDataSource(data);
-      console.log(data);
-    })  
-  }
-
 }
+     

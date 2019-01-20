@@ -1,7 +1,8 @@
+<div class="center">
 <div class="button-row">
   <a mat-fab color="primary" [routerLink]="['/persons']"><mat-icon>list</mat-icon></a>
 </div>
-<mat-card class="example-card">
+<mat-card class="example-card" flex="50">
   <mat-card-header>
     <mat-card-title><h2>{{person.FirstName}}</h2></mat-card-title>
     <mat-card-subtitle>{{person.LastName}}</mat-card-subtitle>
@@ -21,3 +22,4 @@
     <a mat-fab color="warn" (click)="deletePerson(person.key)"><mat-icon>delete</mat-icon></a>
   </mat-card-actions>
 </mat-card>
+</div>

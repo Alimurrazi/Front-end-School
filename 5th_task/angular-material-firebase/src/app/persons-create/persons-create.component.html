@@ -1,6 +1,6 @@
 <div class="button-row">
   <a mat-fab color="primary" [routerLink]="['/persons']"><mat-icon>list</mat-icon></a>
-</div>  {{personForm.value}}
+</div>
 <form [formGroup]="personForm" (ngSubmit)="onFormSubmit(personForm.value)">
   <mat-form-field class="example-full-width">
     <input matInput placeholder="First Name" formControlName="FirstName"

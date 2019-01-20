@@ -18,13 +18,14 @@ export class PersonsEditComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private firebase: FireBaseService, private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
+    this.getPerson(this.route.snapshot.params['id']);
     this.personForm = this.formBuilder.group({
       'FirstName' : [null, Validators.required],
       'LastName' : [null, Validators.required]
     });
   }
 
-  getBoard(id) {
+  getPerson(id) {
     this.firebase.getPerson(id).subscribe(data => {
       this.id = data.key;
       this.personForm.setValue({

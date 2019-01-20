@@ -1,7 +1,19 @@
 .example-card {
-    max-width: 500px;
+    width: 75%;
+    margin-bottom: 10%;
   }
   
   .button-row {
     margin: 10px 0;
   }
+
+  
+
+  /*
+  .center
+  {
+    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }*/

@@ -1,5 +1,5 @@
 <div class="button-row">
-  <a mat-fab color="primary" (click)="personsDetails()"><mat-icon>show</mat-icon></a>
+  <a mat-fab color="primary" (click)="personsDetails()"><mat-icon>account_circle</mat-icon></a>
 </div>
 <form [formGroup]="personForm" (ngSubmit)="onFormSubmit(personForm.value)">
   <mat-form-field class="example-full-width">
@@ -9,6 +9,7 @@
       <span *ngIf="!personForm.get('FirstName').valid && personForm.get('FirstName').touched">Please enter Book Title</span>
     </mat-error>
   </mat-form-field>
+  <br>
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Last Name" formControlName="LastName"
            [errorStateMatcher]="matcher">

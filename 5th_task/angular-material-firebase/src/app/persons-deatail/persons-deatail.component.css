@@ -1,5 +1,5 @@
 .example-card {
-    width: 75%;
+    width: 50%;
     margin-bottom: 10%;
   }
   
@@ -7,13 +7,14 @@
     margin: 10px 0;
   }
 
-  
+  .example-header-image {
+    background-size: cover;
+  }
 
-  /*
-  .center
-  {
-    height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* .leftAction{
+    float: left;
   }*/
+  .rightAction{
+    /* float: right; */
+    /* padding-left: 65%; */
+  } 

@@ -4,22 +4,20 @@
 </div>
 <mat-card class="example-card" flex="50">
   <mat-card-header>
-    <mat-card-title><h2>{{person.FirstName}}</h2></mat-card-title>
-    <mat-card-subtitle>{{person.LastName}}</mat-card-subtitle>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title><h2>{{person.FirstName+" "+person.LastName}}</h2></mat-card-title>
+    <!-- <mat-card-subtitle>{{person.LastName}}</mat-card-subtitle> -->
   </mat-card-header>
-  <mat-card-content>
-    <dl>
-      <dt>First Name:</dt>
-      <dd>{{person.FirstName}}</dd>
-      <dt>Last Name:</dt>
-      <dd>{{person.LastName}}</dd>
-  <!--    <dt>Update Date:</dt>
-      <dd>{{board.updated_date | date}}</dd>  -->
-    </dl>
-  </mat-card-content>
+  <img mat-card-image src="http://lorempixel.com/400/200/abstract" alt="Photo of user">
+
   <mat-card-actions>
-    <a mat-fab color="primary" [routerLink]="['/persons-edit', person.key]"><mat-icon>edit</mat-icon></a>
-    <a mat-fab color="warn" (click)="deletePerson(person.key)"><mat-icon>delete</mat-icon></a>
+    <span class="leftAction">
+        <a mat-fab color="primary" [routerLink]="['/persons-edit', person.key]"><mat-icon>edit</mat-icon></a>
+    </span>
+    <span class="rightAction">
+        <a mat-fab color="warn" (click)="deletePerson(person.key)"><mat-icon>delete</mat-icon></a>
+    </span>
   </mat-card-actions>
+  
 </mat-card>
 </div>

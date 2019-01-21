@@ -9,6 +9,7 @@ import firestore from 'firebase/firestore';
 })
 export class FireBaseService {
   
+  personId:any;
   ref = firebase.firestore().collection('Persons');
 
   constructor() { }

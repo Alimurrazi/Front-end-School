@@ -20,8 +20,9 @@ import { MatInputModule,
          MatFormFieldModule } from "@angular/material";
 import { FormsModule, 
          ReactiveFormsModule } from '@angular/forms';
-import { environment } from '../environments/environment';
-
+import { MatDialogModule } from "@angular/material";
+import { DialogComponent } from './dialog/dialog.component';         
+         
 const appRoutes: Routes = [
   {
      path: 'persons',
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     PersonsComponent,
     PersonsDeatailComponent,
     PersonsCreateComponent,
-    PersonsEditComponent
+    PersonsEditComponent,
+    DialogComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -73,9 +75,11 @@ const appRoutes: Routes = [
     MatCardModule, 
     MatFormFieldModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }

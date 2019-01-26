@@ -10,6 +10,7 @@ import firestore from 'firebase/firestore';
 export class FireBaseService {
   
   ref = firebase.firestore().collection('Persons');
+  totalPerson;
 
   constructor() { }
 
@@ -17,6 +18,8 @@ export class FireBaseService {
     return new Observable((observer) => {
       this.ref.onSnapshot((querySnapshot) => {
         let persons = [];
+        console.log(querySnapshot.docs.length);
+        this.totalPerson = querySnapshot.docs.length;
         querySnapshot.forEach((doc) => {
           let data = doc.data();
           persons.push({

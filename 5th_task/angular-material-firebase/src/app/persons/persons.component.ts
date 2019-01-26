@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { FireBaseService } from '../fire-base.service';
+import { MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-persons',

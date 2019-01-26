@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
 import firestore from 'firebase/firestore';
+import { FireBaseService } from './fire-base.service';
 
 //const settings = { timestampsInSnapshots: true };
 const config = {
@@ -19,6 +20,11 @@ const config = {
 })
 export class AppComponent {
   title = 'angular-material-firebase';
+  totalPerson:number = 10;
+  
+  constructor (private firebase: FireBaseService){
+   // this.totalPerson = firebase.totalPerson;
+  }
   ngOnInit() {
     firebase.initializeApp(config);
   //  firebase.firestore().settings(settings);

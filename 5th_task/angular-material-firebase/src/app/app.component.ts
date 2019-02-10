@@ -20,9 +20,9 @@ const config = {
 })
 export class AppComponent {
   title = 'angular-material-firebase';
-  totalPerson:number = 10;
+  totalPerson:any = "*";
   
-  constructor (private firebase: FireBaseService){
+  constructor (){
    // this.totalPerson = firebase.totalPerson;
   }
   ngOnInit() {

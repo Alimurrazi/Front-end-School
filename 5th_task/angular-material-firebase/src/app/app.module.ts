@@ -21,7 +21,9 @@ import { MatInputModule,
 import { FormsModule, 
          ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from "@angular/material";
-import { DialogComponent } from './dialog/dialog.component';         
+import { DialogComponent } from './dialog/dialog.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';         
          
 const appRoutes: Routes = [
   {
@@ -76,7 +78,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     FormsModule, 
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,29 @@
+<button mat-button color="primary">
+  <a color="primary" routerLink="/person-create"><mat-icon>add</mat-icon>
+  Add new Person</a>
+</button>
+
+
+<mat-table #table [dataSource]="dataSource" matSort [trackBy]="trackByUid" class="animate">
+
+  <ng-container matColumnDef="FirstName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> FirstName </mat-header-cell>
+    <mat-cell *matCellDef="let person"> {{ person.FirstName }} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="LastName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> LastName </mat-header-cell>
+    <mat-cell *matCellDef="let person"> {{ person.LastName }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let person"> 
+        <button mat-raised-button  color="primary" (click)="openDialog(person)">Edit</button> 
+      </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" class="animate"></mat-row>
+</mat-table>

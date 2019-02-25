@@ -4,7 +4,7 @@
 </button>
 
 
-<mat-table #table [dataSource]="dataSource" matSort [trackBy]="trackByUid" class="animate">
+<mat-table #table [dataSource]="dataSource" matSort class="animate">
 
   <ng-container matColumnDef="FirstName">
     <mat-header-cell *matHeaderCellDef mat-sort-header> FirstName </mat-header-cell>
@@ -18,11 +18,19 @@
   </ng-container>
 
   <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
-      <mat-cell *matCellDef="let person"> 
-        <button mat-raised-button  color="primary" (click)="openDialog(person)">Edit</button> 
+      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let person">
+        <button mat-raised-button  color="primary">
+          <a [routerLink]="['/person-edit/', person.id]">Edit</a></button>
       </mat-cell>
   </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+    <mat-cell *matCellDef="let person">
+      <button mat-raised-button  color="warn" (click)="openDialog(person)">Delete</button> 
+    </mat-cell>
+</ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;" class="animate"></mat-row>

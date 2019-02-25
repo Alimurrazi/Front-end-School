@@ -10,34 +10,45 @@ import { environment } from '../environments/environment';
 import { ReadComponent } from './read/read.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { 
-  MatTableModule, 
-  MatFormFieldModule, 
-  MatInputModule, 
-  MatSortModule, 
-  MatDialogModule, 
+import {
+  MatTableModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSortModule,
+  MatDialogModule,
   MatButtonModule,
   MatIconModule
 } from '@angular/material';
 import { CreateComponent } from './create/create.component';
 import { createComponent } from '@angular/compiler/src/core';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
+import { UpdateComponent } from './update/update.component';
 
 const appRoutes: Routes = [
   {
     path: 'person-create',
     component: CreateComponent,
-    data: {title: 'create Person'}
+    data: { title: 'create Person' }
   },
   {
     path: '',
     component: ReadComponent
+  },
+  {
+    path: 'person-edit/:id',
+    component: UpdateComponent,
+    data: {title: 'Update Person'}
   }]
 
 @NgModule({
   declarations: [
     AppComponent,
     ReadComponent,
-    CreateComponent
+    CreateComponent,
+    UpdateComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -47,12 +58,14 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule, 
+    MatInputModule,
     MatSortModule,
     MatDialogModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

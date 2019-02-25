@@ -1,14 +1,20 @@
-<form>
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="firstName" required>
+<form [formGroup]="personForm" (ngSubmit)="onFormSubmit(personForm.value)">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="First Name" formControlName="FirstName"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!personForm.get('FirstName').valid && personForm.get('FirstName').touched">Please enter First Name</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Last Name" formControlName="LastName"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!personForm.get('LastName').valid && personForm.get('LastName').touched">Please enter Last Name</span>
+    </mat-error>
+  </mat-form-field>
+  <div class="button-row">
+    <button type="submit" [disabled]="!personForm.valid" mat-fab color="primary"><mat-icon>save</mat-icon></button>
   </div>
-
-  <div class="form-group">
-    <label for="alterEgo">Alter Ego</label>
-    <input type="text" class="form-control" id="lastName">
-  </div>
-
-  <button type="submit" class="btn btn-success">Submit</button>
-
 </form>
+

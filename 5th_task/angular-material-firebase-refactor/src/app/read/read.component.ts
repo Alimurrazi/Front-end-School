@@ -9,7 +9,7 @@ import { MatTableDataSource, MatSort, MatDialog } from '@angular/material';
 })
 export class ReadComponent implements OnInit, AfterViewInit {
   
-  displayedColumns = ['FirstName','LastName'];
+  displayedColumns = ['FirstName','LastName','edit','delete'];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -20,9 +20,10 @@ export class ReadComponent implements OnInit, AfterViewInit {
   
   ngAfterViewInit(){
     this.db.collection<any>('Persons').valueChanges().subscribe(data =>{
+      console.log(data);
+      console.log(this.db.collection('person'));
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
-      console.log(this.dataSource);
     })
   }
 

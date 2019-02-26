@@ -1,8 +1,14 @@
-<button mat-button color="primary">
-  <a color="primary" routerLink="/person-create"><mat-icon>add</mat-icon>
-  Add new Person</a>
+<button mat-raised-button color="accent" (click)="addPerson()">
+  <mat-icon>add</mat-icon>
+  Add new Person
 </button>
 
+<!-- <mat-card fxFlex fxLayoutAlign="start center" fxLayout="column" class="solution"  
+[style.borderRadius.px]="'0'"  [style.paddingTop.px]="'60'">
+<button mat-button><mat-icon>mic</mat-icon> Start Recording</button>
+<br/>
+<button mat-raised-button color="accent"><mat-icon>mic</mat-icon> Start Recording</button>
+</mat-card> -->
 
 <mat-table #table [dataSource]="dataSource" matSort class="animate">
 
@@ -18,19 +24,23 @@
   </ng-container>
 
   <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-      <mat-cell *matCellDef="let person">
-        <button mat-raised-button  color="primary">
-          <a [routerLink]="['/person-edit/', person.id]">Edit</a></button>
-      </mat-cell>
+    <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+    <mat-cell *matCellDef="let person">
+      <button mat-raised-button color="primary" (click)="updatePerson(person.id)">
+        <mat-icon>update</mat-icon>
+        Edit
+      </button>
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="delete">
     <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
     <mat-cell *matCellDef="let person">
-      <button mat-raised-button  color="warn" (click)="openDialog(person)">Delete</button> 
+      <button mat-raised-button color="warn" (click)="openDialog(person)">
+        <mat-icon>delete</mat-icon>Delete
+      </button>
     </mat-cell>
-</ng-container>
+  </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;" class="animate"></mat-row>

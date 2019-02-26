@@ -27,6 +27,7 @@ import {
 } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const appRoutes: Routes = [
   {
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],

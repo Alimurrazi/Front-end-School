@@ -1,0 +1,10 @@
+<mat-dialog-content class="mat-typography">
+  <h3>
+    Do you really delete the selected person?
+  </h3>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" (click)="deletePerson()">Yes</button>
+</mat-dialog-actions>

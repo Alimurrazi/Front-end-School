@@ -26,6 +26,7 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 const appRoutes: Routes = [
   {
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     AppComponent,
     ReadComponent,
     CreateComponent,
-    UpdateComponent
+    UpdateComponent,
+    DeleteDialogComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -68,6 +70,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteDialogComponent],
 })
 export class AppModule { }

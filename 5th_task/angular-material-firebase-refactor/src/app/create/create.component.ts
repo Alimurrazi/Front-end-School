@@ -24,11 +24,14 @@ export class CreateComponent implements OnInit {
   }
 
   onFormSubmit(form) {
-    this.db.collection('Persons').add({
+
+    const person = {
       FirstName: form.FirstName,
       LastName:  form.LastName,
       id: Date.now().toString(36) + Math.random().toString(36).substr(2, 9)
-    });
+    }
+    this.db.collection('Persons').doc(person.id).set(person);
+
     this.router.navigate(['']);
   }
 

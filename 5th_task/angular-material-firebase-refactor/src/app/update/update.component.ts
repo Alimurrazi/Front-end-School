@@ -20,23 +20,27 @@ export class UpdateComponent implements OnInit {
   ngOnInit() {
 
     this.personForm = this.formBuilder.group({
-      'FirstName' : [null, Validators.required],
-      'LastName' : [null, Validators.required]
+      'FirstName': [null, Validators.required],
+      'LastName': [null, Validators.required]
     });
 
     this.id = this.route.snapshot.params['id'];
 
     this.db.collection<any>('Persons', ref => ref.where('id', '==', this.id)).valueChanges().subscribe(data => {
       this.FirstName = data[0].FirstName;
-      this.LastName =  data[0].LastName;
-      console.log(this.FirstName+" "+this.LastName);
+      this.LastName = data[0].LastName;
+      console.log(this.FirstName + " " + this.LastName);
     })
 
   }
 
-onFormUpdate(form)
-{
-  console.log(form);
-}  
+  onFormUpdate(form) {
+    this.db.collection('Persons').doc(this.id).update({
+      FirstName: form.FirstName,
+      LastName: form.LastName
+    });
+    this.router.navigate(['']);
+
+  }
 
 }

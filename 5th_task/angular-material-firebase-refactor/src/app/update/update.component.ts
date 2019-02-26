@@ -29,16 +29,16 @@ export class UpdateComponent implements OnInit {
     this.db.collection<any>('Persons', ref => ref.where('id', '==', this.id)).valueChanges().subscribe(data => {
       this.FirstName = data[0].FirstName;
       this.LastName = data[0].LastName;
-      console.log(this.FirstName + " " + this.LastName);
     })
 
   }
 
   onFormUpdate(form) {
-    this.db.collection('Persons').doc(this.id).update({
-      FirstName: form.FirstName,
-      LastName: form.LastName
-    });
+     this.db.collection('Persons').doc(this.id).update({
+       FirstName: form.FirstName,
+       LastName: form.LastName
+     });
+
     this.router.navigate(['']);
 
   }

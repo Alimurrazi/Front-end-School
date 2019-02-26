@@ -20,8 +20,6 @@ export class ReadComponent implements OnInit, AfterViewInit {
   
   ngAfterViewInit(){
     this.db.collection<any>('Persons').valueChanges().subscribe(data =>{
-      console.log(data);
-      console.log(this.db.collection('person'));
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
     })

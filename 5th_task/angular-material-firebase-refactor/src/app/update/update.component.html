@@ -1,3 +1,4 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="update">
 <form [formGroup]="personForm" (ngSubmit)="onFormUpdate(personForm.value)">
     <mat-form-field class="example-full-width">
       <input matInput placeholder="First Name" formControlName="FirstName"
@@ -6,6 +7,7 @@
         <span *ngIf="!personForm.get('FirstName').valid && personForm.get('FirstName').touched">Please enter First Name</span>
       </mat-error>
     </mat-form-field>
+    <br>
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Last Name" formControlName="LastName"
              [errorStateMatcher]="matcher" [(ngModel)]="this.LastName">
@@ -17,3 +19,4 @@
       <button type="submit" [disabled]="!personForm.valid" mat-fab color="primary"><mat-icon>save</mat-icon></button>
     </div>
   </form>
+</div>

@@ -1,12 +1,14 @@
-<form [formGroup]="personForm" (ngSubmit)="onFormSubmit(personForm.value)">
-  <mat-form-field class="example-full-width">
+<div fxLayout="row" fxLayoutAlign="start center" class="update">
+<form [formGroup]="personForm" (ngSubmit)="onFormSubmit(personForm.value)" class=".example-container">
+  <mat-form-field>
     <input matInput placeholder="First Name" formControlName="FirstName"
            [errorStateMatcher]="matcher">
     <mat-error>
       <span *ngIf="!personForm.get('FirstName').valid && personForm.get('FirstName').touched">Please enter First Name</span>
     </mat-error>
   </mat-form-field>
-  <mat-form-field class="example-full-width">
+  <br>
+  <mat-form-field>
     <input matInput placeholder="Last Name" formControlName="LastName"
            [errorStateMatcher]="matcher">
     <mat-error>
@@ -17,4 +19,4 @@
     <button type="submit" [disabled]="!personForm.valid" mat-fab color="primary"><mat-icon>save</mat-icon></button>
   </div>
 </form>
-
+</div>

@@ -19,15 +19,18 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
     this.personForm = this.formBuilder.group({
       'FirstName' : [null, Validators.required],
-      'LastName' : [null, Validators.required]
+      'LastName' : [null, Validators.required],
+      'DOB' : [null, Validators.required]
     });
   }
 
   onFormSubmit(form) {
-
+    let birthDate = new Date(form.DOB).toLocaleDateString("en-US");
+    debugger;
     const person = {
       FirstName: form.FirstName,
       LastName:  form.LastName,
+      DOB: birthDate,
       id: Date.now().toString(36) + Math.random().toString(36).substr(2, 9)
     }
     this.db.collection('Persons').doc(person.id).set(person);

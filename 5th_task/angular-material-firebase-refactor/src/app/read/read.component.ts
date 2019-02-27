@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ReadComponent implements OnInit, AfterViewInit {
   
-  displayedColumns = ['FirstName','LastName','edit','delete'];
+  displayedColumns = ['FirstName','LastName','DOB','edit','delete'];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -21,6 +21,7 @@ export class ReadComponent implements OnInit, AfterViewInit {
   
   ngAfterViewInit(){
     this.db.collection<any>('Persons').valueChanges().subscribe(data =>{
+      console.log(data);
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
     })

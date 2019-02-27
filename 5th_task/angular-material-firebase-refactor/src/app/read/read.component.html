@@ -15,6 +15,11 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header> LastName </mat-header-cell>
     <mat-cell *matCellDef="let person"> {{ person.LastName }} </mat-cell>
   </ng-container>
+  
+  <ng-container matColumnDef="DOB">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> DOB </mat-header-cell>
+      <mat-cell *matCellDef="let person"> {{ person.DOB }} </mat-cell>
+    </ng-container>
 
   <ng-container matColumnDef="edit">
     <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>

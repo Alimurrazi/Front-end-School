@@ -20,7 +20,9 @@ import {
   MatIconModule,
   MatSidenavModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatNativeDateModule,
+  MatDatepickerModule
 } from '@angular/material';
 import { CreateComponent } from './create/create.component';
 import { createComponent } from '@angular/compiler/src/core';
@@ -31,6 +33,7 @@ import {
 import { UpdateComponent } from './update/update.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+// import {MatDatepickerModule} from '@angular/material/datepicker';
 
 const appRoutes: Routes = [
   {
@@ -75,9 +78,11 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
   entryComponents: [DeleteDialogComponent],
 })

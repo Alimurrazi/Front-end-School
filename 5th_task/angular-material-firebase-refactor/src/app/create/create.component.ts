@@ -26,7 +26,6 @@ export class CreateComponent implements OnInit {
 
   onFormSubmit(form) {
     let birthDate = new Date(form.DOB).toLocaleDateString("en-US");
-    debugger;
     const person = {
       FirstName: form.FirstName,
       LastName:  form.LastName,

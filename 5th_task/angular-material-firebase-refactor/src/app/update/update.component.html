@@ -1,22 +1,35 @@
-<div fxLayout="row"  class="update">
-<form [formGroup]="personForm" (ngSubmit)="onFormUpdate(personForm.value)">
+<div fxLayout="row" class="update">
+  <form [formGroup]="personForm" (ngSubmit)="onFormUpdate(personForm.value)">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="First Name" formControlName="FirstName"
-             [errorStateMatcher]="matcher" [(ngModel)]="this.FirstName">
+      <input matInput placeholder="First Name" formControlName="FirstName" [errorStateMatcher]="matcher"
+        [(ngModel)]="this.FirstName">
       <mat-error>
-        <span *ngIf="!personForm.get('FirstName').valid && personForm.get('FirstName').touched">Please enter First Name</span>
+        <span *ngIf="!personForm.get('FirstName').valid && personForm.get('FirstName').touched">Please enter First
+          Name</span>
       </mat-error>
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Last Name" formControlName="LastName"
-             [errorStateMatcher]="matcher" [(ngModel)]="this.LastName">
+      <input matInput placeholder="Last Name" formControlName="LastName" [errorStateMatcher]="matcher"
+        [(ngModel)]="this.LastName">
       <mat-error>
-        <span *ngIf="!personForm.get('LastName').valid && personForm.get('LastName').touched">Please enter Last Name</span>
+        <span *ngIf="!personForm.get('LastName').valid && personForm.get('LastName').touched">Please enter Last
+          Name</span>
       </mat-error>
     </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="this.birthDate" placeholder="Choose your birthday date"
+        formControlName="DOB">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
     <div class="button-row">
-      <button type="submit" [disabled]="!personForm.valid" mat-fab color="primary"><mat-icon>save</mat-icon></button>
+      <button type="submit" [disabled]="!personForm.valid" mat-fab color="primary">
+        <mat-icon>save</mat-icon>
+      </button>
     </div>
   </form>
 </div>

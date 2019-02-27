@@ -14,6 +14,7 @@ export class UpdateComponent implements OnInit {
   FirstName: string = '';
   LastName: string = '';
   id: string = '';
+  birthDate: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private db: AngularFirestore, private formBuilder: FormBuilder) { }
 
@@ -21,7 +22,8 @@ export class UpdateComponent implements OnInit {
 
     this.personForm = this.formBuilder.group({
       'FirstName': [null, Validators.required],
-      'LastName': [null, Validators.required]
+      'LastName': [null, Validators.required],
+      'DOB': [null, Validators.required]
     });
 
     this.id = this.route.snapshot.params['id'];
@@ -29,6 +31,7 @@ export class UpdateComponent implements OnInit {
     this.db.collection<any>('Persons', ref => ref.where('id', '==', this.id)).valueChanges().subscribe(data => {
       this.FirstName = data[0].FirstName;
       this.LastName = data[0].LastName;
+      this.birthDate = new Date(data[0].DOB);
     })
 
   }
@@ -36,7 +39,8 @@ export class UpdateComponent implements OnInit {
   onFormUpdate(form) {
      this.db.collection('Persons').doc(this.id).update({
        FirstName: form.FirstName,
-       LastName: form.LastName
+       LastName: form.LastName,
+       DOB: new Date(form.DOB).toLocaleDateString("en-US")
      });
 
     this.router.navigate(['']);

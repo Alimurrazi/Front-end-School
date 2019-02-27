@@ -17,7 +17,10 @@ import {
   MatSortModule,
   MatDialogModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
 import { CreateComponent } from './create/create.component';
 import { createComponent } from '@angular/compiler/src/core';
@@ -69,7 +72,10 @@ const appRoutes: Routes = [
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent],

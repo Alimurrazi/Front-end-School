@@ -1,0 +1,272 @@
+import {Component, Inject, OnInit} from '@angular/core';
+import {EventFormComponent} from '../../../../../../calendar/components/event-form/event-form.component';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
+import {FormArray, FormBuilder, FormGroup, Validators, FormControl, ValidatorFn} from '@angular/forms';
+import {ConfirmationModalComponent} from '../confirmation-modal/confirmation-modal.component';
+import {CalendarService} from '../../../../../../calendar/services/calendar.service';
+import {DemoRequestsService} from '../../../../../services/demo-requests.service';
+import {ActivatedRoute, Params} from '@angular/router';
+import {TranslateService} from '@ecap3/core';
+import * as _moment from 'moment';
+
+@Component({
+    selector: 'app-preferences-update-modal',
+    templateUrl: './preferences-update-modal.component.html',
+    styleUrls: ['./preferences-update-modal.component.scss']
+})
+export class PreferencesUpdateModalComponent implements OnInit {
+    isLoading: boolean = false;
+    attendees = [];
+    attendeeForm: FormGroup;
+    languages = [
+        {
+            value: 'de-DE',
+            viewValue: 'German'
+        },
+        {
+            value: 'en-US',
+            viewValue: 'English'
+        },
+        {
+            value: 'fr-FR',
+            viewValue: 'French'
+        },
+        {
+            value: 'it-IT',
+            viewValue: 'Italian'
+        },
+    ];
+    CookingForPersonNumberOptions = [
+        '1',
+        '2',
+        '3-4',
+        this.translateService.getTranslation('MORE_THAN_FIVE')
+    ];
+    CookingTimesPerWeekOptions = [
+        this.translateService.getTranslation('AT_LEAST_TWICE_A_DAY'),
+        this.translateService.getTranslation('DAILY'),
+        this.translateService.getTranslation('THREE_TO_FIVE_TIMES'),
+        this.translateService.getTranslation('ONE_TO_TWO_TIMES'),
+        this.translateService.getTranslation('RARELY'),
+    ];
+
+    CookingImportanceOptions = [
+        {value:  this.translateService.getTranslation('HEALTHY'), id: 1 },
+        {value:  this.translateService.getTranslation('CREATIVE'), id: 2 },
+        {value:  this.translateService.getTranslation('ECONOMIC'), id: 3 },
+        {value:  this.translateService.getTranslation('EASY'), id: 4 },
+        {value:  this.translateService.getTranslation('FAST'), id: 5 },
+        {value:  this.translateService.getTranslation('OTHERS_IN_UPDATE_PREFENCES'), id: 6 },
+    ];
+
+    //     CookingImportanceOptions = [
+    //     this.translateService.getTranslation("HEALTHY"),
+    //     this.translateService.getTranslation("CREATIVE"),
+    //     this.translateService.getTranslation("ECONOMIC"),
+    //     this.translateService.getTranslation("EASY"),
+    //     this.translateService.getTranslation("FAST"),
+    //     this.translateService.getTranslation("OTHERS_IN_UPDATE_PREFENCES"),
+    //   ];
+
+    CookingBotheredOptions = [
+        {value:  this.translateService.getTranslation('PREPARE_CHOPPING'), id: 1 },
+        {value:  this.translateService.getTranslation('TO_CLEANUP'), id: 2 },
+        {value:  this.translateService.getTranslation('OTHERS_IN_UPDATE_PREFENCES'), id: 3 },
+    ];
+    Today = new Date();
+    BirthMaxDate = new Date(this.Today.getFullYear() - 18, this.Today.getMonth(), this.Today.getDate());
+
+    DemoRequestId = "";
+
+    importanceControls;
+    botheredControls;
+
+    constructor(public dialogRef: MatDialogRef<EventFormComponent>,
+                @Inject(MAT_DIALOG_DATA) public data: any,
+                private formBuilder: FormBuilder,
+                public dialog: MatDialog,
+                public CalendarService: CalendarService,
+                public snackBar: MatSnackBar,
+                private demoRequestsService: DemoRequestsService,
+                private activatedRoute: ActivatedRoute,
+                private translateService: TranslateService) {
+        this.attendees = this.data['attendees'];
+        this.initForm();
+        this.DemoRequestId = this.data['DemoRequestId'];
+        console.log(this.DemoRequestId);
+    }
+
+    initForm() {
+        console.log(this.data['attendees'].length);
+        this.attendeeForm = this.formBuilder.group({
+            attendees: this.formBuilder.array([])
+        });
+
+        this.data['attendees'].forEach(attendee => {
+            this.importanceControls = this.CookingImportanceOptions.map(control => new FormControl(false));
+            this.botheredControls = this.CookingBotheredOptions.map(control => new FormControl(false));
+
+            attendee['CookingImportance'] = this.importanceControls;
+            attendee['CookingBothered'] = this.botheredControls;
+
+            let control = <FormArray>this.attendeeForm.controls['attendees'];
+            if (attendee['DateOfBirth'] && attendee['DateOfBirth'].indexOf('0001') > -1) {
+                attendee['DateOfBirth'] = null;
+            }
+            if (attendee['LanguageSpeakes'] && attendee['LanguageSpeakes'].length > 0) {
+                control.push(this.initAttendee(attendee['ItemId'], attendee['DisplayName'], attendee['DateOfBirth'], attendee['LanguageSpeakes'][0], attendee['CookingForPersonNumber'], attendee['CookingTimesPerWeek'], attendee['CookingImportance'], attendee['CookingBothered'], attendee['CookingBotheredOthers']));
+            } else {
+                control.push(this.initAttendee(attendee['ItemId'], attendee['DisplayName'], attendee['DateOfBirth'], attendee['LanguageSpeakes'], attendee['CookingForPersonNumber'], attendee['CookingTimesPerWeek'], attendee['CookingImportance'], attendee['CookingBothered'], attendee['CookingBotheredOthers']));
+            }
+        });
+    }
+
+    initAttendee(ItemId, DisplayName, DateOfBirth, LanguageSpeakes, CookingForPersonNumber, CookingTimesPerWeek, CookingImportance, CookingBothered, CookingBotheredOthers) {
+        return this.formBuilder.group({
+            ItemId: [ItemId, Validators.required],
+            DisplayName: [DisplayName],
+            DateOfBirth: [DateOfBirth],
+            LanguageSpeakes: [LanguageSpeakes, Validators.required],
+            CookingForPersonNumber: [CookingForPersonNumber, Validators.required],
+            CookingTimesPerWeek: [CookingTimesPerWeek, Validators.required],
+        //  CookingImportance: [CookingImportance, [Validators.required, Validators.minLength(2)]],
+            CookingImportance: new FormArray(CookingImportance, this.minSelectedCheckboxes(2)),
+            // CookingBothered: [CookingBothered, Validators.required],
+            CookingBothered: new FormArray(CookingBothered, this.minSelectedCheckboxes(1)),
+            CookingBotheredOthers: [CookingBotheredOthers],
+        });
+    }
+
+     minSelectedCheckboxes(min) {
+        const validator: ValidatorFn = (formArray: FormArray) => {
+          const totalSelected = formArray.controls
+            .map(control => control.value)
+            .reduce((prev, next) => next ? prev + next : prev, 0);
+          return totalSelected >= min ? null : { required: true };
+        };
+        return validator;
+      }
+
+    ngOnInit() {
+    }
+    // savePreferencesAndMarkAsCompleted(){
+    //     let confirmationDialog = this.dialog.open(ConfirmationModalComponent, {
+    //         maxWidth: '100vh',
+    //         panelClass: 'custom-dialog',
+    //         data: {}
+    //     });
+    //     confirmationDialog.afterClosed()
+    //         .subscribe((response) => {
+    //             if (response && response.confirmed) {
+    //
+    //             }
+    //         });
+    // }
+    savePreferences(MarkAsCompleted) {
+        let confirmationDialog = this.dialog.open(ConfirmationModalComponent, {
+            maxWidth: '100vh',
+            panelClass: 'custom-dialog',
+            data: {}
+        });
+        confirmationDialog.afterClosed()
+            .subscribe((response) => {
+                if (response && response.confirmed) {
+                    this.isLoading = true;
+                    let preferencesData = this.attendeeForm.getRawValue();
+                    let promises = [];
+
+                    preferencesData['attendees'].forEach(attnd => {
+
+                   let selectedCookingImportance = attnd['CookingImportance']
+                   .map((checked, index) => checked ? this.CookingImportanceOptions[index].value : null)
+                   .filter(value => value !== null);
+                   attnd['CookingImportance'] = selectedCookingImportance;
+
+                   let selectedCookingBothered = attnd['CookingBothered']
+                   .map((checked, index) => checked ? this.CookingBotheredOptions[index].value : null)
+                   .filter(value => value !== null);
+                   attnd['CookingBothered'] = selectedCookingBothered;
+
+                        attnd['LanguageSpeakes'] = [attnd['LanguageSpeakes']];
+                        if(attnd['DateOfBirth'] === null){
+                            delete attnd['DateOfBirth'];
+                        }
+                        promises.push(this.CalendarService.updateParticipant(attnd));
+                    });
+                    Promise.all(promises).then(resp => {
+                        let failed = false;
+                        resp.forEach(r => {
+                            if (r.StatusCode !== 0) {
+                                failed = true;
+                            }
+                        });
+                        if (!failed) {
+                            if(MarkAsCompleted){
+                                this.demoRequestsService.markDemoRequestAsPreferencesUpdatedAndMarkDemoCompleted(this.DemoRequestId).then(resp => {
+                                    console.log(resp);
+                                    this.isLoading = false;
+                                    this.dialogRef.close({
+                                        success: true
+                                    });
+                                    this.snackBar.open('Preference Saved Successfully & Demo Marked as completed.', null, {
+                                        duration: 5000
+                                    });
+                                }, error => {
+                                    this.isLoading = false;
+                                    this.dialogRef.close({
+                                        success: false
+                                    });
+                                    this.snackBar.open('Update Failed, Please try again later.', null, {
+                                        duration: 5000
+                                    });
+                                });
+                            }else{
+                                this.demoRequestsService.markDemoRequestAsPreferencesUpdated(this.DemoRequestId).then(resp => {
+                                    console.log(resp);
+                                    this.isLoading = false;
+                                    this.dialogRef.close({
+                                        success: true
+                                    });
+                                    this.snackBar.open('Preference Saved Successfully.', null, {
+                                        duration: 5000
+                                    });
+                                }, error => {
+                                    this.isLoading = false;
+                                    this.dialogRef.close({
+                                        success: false
+                                    });
+                                    this.snackBar.open('Update Failed, Please try again later.', null, {
+                                        duration: 5000
+                                    });
+                                });
+                            }
+                        } else {
+                            this.isLoading = false;
+                            this.dialogRef.close({
+                                success: false
+                            });
+                            this.snackBar.open('Update Failed, Please try again later.', null, {
+                                duration: 5000
+                            });
+                        }
+                    }, error => {
+                        this.isLoading = false;
+                        this.dialogRef.close({
+                            success: false
+                        });
+                        this.snackBar.open('Update Failed, Please try again later.', null, {
+                            duration: 5000
+                        });
+                    });
+                }
+            });
+    }
+
+    get f() {
+        console.log(this.attendeeForm);
+        return this.attendeeForm.controls;
+    }
+    test(i){
+        console.log(i);
+    }
+}

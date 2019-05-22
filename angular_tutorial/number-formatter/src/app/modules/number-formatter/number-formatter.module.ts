@@ -6,6 +6,9 @@ import { NumberFormatterComponent } from './number-formatter.component';
   declarations: [NumberFormatterComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    NumberFormatterComponent
   ]
 })
 export class NumberFormatterModule { }

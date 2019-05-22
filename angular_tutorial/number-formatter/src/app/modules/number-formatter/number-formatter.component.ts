@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-number-formatter',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./number-formatter.component.css']
 })
 export class NumberFormatterComponent implements OnInit {
-  ngNumber: string;
+  @Input() public ngNumber: string;
 
   constructor() { }
 

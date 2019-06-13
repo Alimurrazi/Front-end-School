@@ -1,0 +1,27 @@
+*npm install --save-dev electron 
+
+*create main.js file (where package.json stayed, must be changed file name)
+
+* edit index.html file ("<base href="./">  ")
+
+* in package.json file add
+
+  "main": "main.js",
+  "electron": "ng build && electron ." (in scrips array);
+
+* npm run electron
+* npm install electron-packager --save-dev
+* add "pack": "electron-packager ." (in scripts array);
+
+
+* electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 
+
+--arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName="Electron Tutorial App"
+
+(only first line still works in my app...)
+
+
+
+***link***
+https://www.christianengvall.se/electron-packager-tutorial/
+https://www.c-sharpcorner.com/article/steps-to-build-angular-7-beta-desktop-apps-with-electron/

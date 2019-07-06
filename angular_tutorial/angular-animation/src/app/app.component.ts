@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
 import * as jQuery from 'jquery';
-//import 'slick-carousel';
+import 'slick-carousel';
 
 @Component({
   selector: 'app-root',

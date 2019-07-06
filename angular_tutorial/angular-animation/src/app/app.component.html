@@ -1,0 +1,35 @@
+<div class="container color-light" [@goals]="goals.length">
+    <p class="life-container" *ngFor="let goal of goals">
+        {{ goal }}
+      </p>
+</div>
+
+<ul id="carousel">
+    <li *ngFor="let map of items; index as index; trackBy: trackMap" class="gauge-wrapper blue">
+        {{index+1}}
+        <!-- <div class="gauge-title">
+            {{map.name}}
+        </div>
+
+    <nz-progress [nzPercent]="index" 
+                [nzWidth]="44"
+                nzType="dashboard">
+    </nz-progress> -->
+    </li>
+</ul>
+
+<div id="slick-carousel">
+    <div>slide 1</div>
+    <div>slide 2</div>
+    <div>slide 3</div>
+</div>
+<!-- <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
+    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+          <img src="{{ slide.img }}" alt="" width="100%">
+    </div>
+</ngx-slick>
+<button (click)="addSlide()">Add</button>
+<button (click)="removeSlide()">Remove</button>
+<button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
+<button (click)="slickModal.unslick()">unslick</button> -->
+<router-outlet></router-outlet>

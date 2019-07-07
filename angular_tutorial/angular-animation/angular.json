@@ -28,8 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/slick-carousel/slick/slick.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },

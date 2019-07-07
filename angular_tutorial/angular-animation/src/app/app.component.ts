@@ -13,7 +13,7 @@ import 'slick-carousel';
         query(':enter', style({opacity:0}),{optional: true}),
 
         query(':enter', stagger('300ms',[
-          animate('.6s ease-in', keyframes([
+          animate('1s ease-in', keyframes([
             style({opacity: 0, transform: 'translateY(-75%)', offset: 0}),
             style({opacity: .5, transform: 'translateY(35px)', offset: 0.3}),
             style({opacity: 1, transform: 'translateY(0)', offset: 1.0}),
@@ -31,6 +31,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
+    const slider = jQuery("#carousel");
+
     setTimeout(() => {
       jQuery('#carousel').slick({
         centerMode: true,
@@ -41,32 +43,28 @@ export class AppComponent implements OnInit {
         focusOnSelect: true,
         speed: 1000,
         slidesToScroll : 5,
+        arrows: false
       });
     });
+
+    slider.on('wheel', (function(e: any) {
+      e.preventDefault();
+
+      if (e.originalEvent.deltaY < 0) {
+        jQuery(this).slick('slickNext');
+      } else {
+        jQuery(this).slick('slickPrev');
+      }
+
+      console.log(e.originalEvent.deltaX+" "+e.originalEvent.deltaY);
+      // if (e.originalEvent < 0) {
+      //   $(this).slick('slickNext');
+      // } else {
+      //   $(this).slick('slickPrev');
+      // }
+
+    }));
+
 }
-
-
-  // slides = [
-  //   {img: "http://placehold.it/350x150/000000"},
-  //   {img: "http://placehold.it/350x150/111111"},
-  //   {img: "http://placehold.it/350x150/333333"},
-  //   {img: "http://placehold.it/350x150/666666"}
-  // ];
-
-  // slideConfig = {"slidesToShow": 1,
-  // "slidesToScroll": 1,
-  // "dots": true,
-  // "infinite": true,
-  // "autoplay": true,
-  // "autoplaySpeed": 1500};
-  // addSlide() {
-  //   this.slides.push({img: "http://placehold.it/350x150/777777"})
-  // }
-  // removeSlide() {
-  //   this.slides.length = this.slides.length - 1;
-  // }
-  // afterChange(e) {
-  //   console.log('afterChange');
-  // }
 
 }

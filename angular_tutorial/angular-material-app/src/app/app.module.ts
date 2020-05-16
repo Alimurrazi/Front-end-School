@@ -14,7 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
+import { HttpClientModule, /* other http imports */ } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatFormFieldModule,
     FormsModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

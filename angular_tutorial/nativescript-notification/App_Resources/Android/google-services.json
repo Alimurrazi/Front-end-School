@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "787358691304",
+    "firebase_url": "https://bijoy-4e976.firebaseio.com",
+    "project_id": "bijoy-4e976",
+    "storage_bucket": "bijoy-4e976.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787358691304:android:1a8ad8e76c45005c9cbe5d",
+        "android_client_info": {
+          "package_name": "org.nativescript.alarmnotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787358691304-k2r55rgu58kecu3hnuhf6kljnio09v4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw9qjzvDY-v_MnrMMqS7JaODe8XP5DrA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787358691304-k2r55rgu58kecu3hnuhf6kljnio09v4v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

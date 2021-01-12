@@ -1,1 +1,0 @@
-https://stackoverflow.com/questions/40719439/how-to-use-coverflow-or-slick-slider-in-angular2
